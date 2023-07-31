@@ -233,7 +233,7 @@ public class VendingMachine {
 
     /**
      * This method acts as the text-based interface for Maintenance Features Menu.
-     * Options include Vending Features, Maintenance Features, and Back to Main Menu.
+     * Options include Add Item, Change Price, Collect Payment, Replenish Stock, Replenish Change, Print Purchase Summary, and Back to test Menu.
      *
      * @param scanner the initialized scanner
      */
