@@ -10,6 +10,22 @@ public class RegularMaintenanceFeatures extends JFrame {
     private JButton replenishChangeButton;
     private JButton printSummaryButton;
     private JButton backButton;
+
+    public RegularMaintenanceFeatures() {
+        // title
+        super("Regular Vending Machine Features");
+        setLayout(new BorderLayout());
+
+        setSize(300, 300);
+
+        showRegMaintenanceOptions(this);
+
+        setVisible(true);
+        setResizable(false);
+
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+    }
     public void showRegMaintenanceOptions(JFrame parentFrame) {
         // Create a new JFrame for displaying the options
         JFrame regMaintenanceOptionsFrame = new JFrame("Maintenance Features");

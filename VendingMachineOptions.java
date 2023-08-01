@@ -9,6 +9,21 @@ public class VendingMachineOptions extends JFrame {
     private JButton vendingMachineButton;
     private JButton maintenanceButton;
     private JButton exitTestButton;
+
+    public VendingMachineOptions() {
+        // Initialize the JFrame with a title
+        super("Vending Machine Options");
+        setLayout(new BorderLayout());
+
+        setSize(300, 200);
+        vendingTypes(this);
+
+        setVisible(true);
+        setResizable(false);
+
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+
     public void vendingTypes(JFrame parentFrame) {
         // Create a new JFrame for displaying the options
         JFrame optionsFrame = new JFrame("Vending Machine Options");

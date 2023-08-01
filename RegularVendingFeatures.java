@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class RegularVendingFeatures extends JFrame {
+
     private JButton enterMoneyButton;
     private JButton displayItemsButton;
     private JButton purchaseItemButton;
@@ -18,9 +19,25 @@ public class RegularVendingFeatures extends JFrame {
     private JButton btn5;
     private JButton btn1;
     private JButton btnDone;
+
     private JLabel cashTrackerLabel;
     private JLabel cashTracker;
 
+    public RegularVendingFeatures() {
+        // title
+        super("Regular Vending Machine Features");
+        setLayout(new BorderLayout());
+
+        setSize(300, 300);
+
+        showRegFeatureOptions(this);
+
+        setVisible(true);
+        setResizable(false);
+
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+    }
 
     public void showRegFeatureOptions(JFrame parentFrame) {
         // Create a new JFrame for displaying the options
@@ -120,11 +137,11 @@ public class RegularVendingFeatures extends JFrame {
 
         // Inner Panel for the Finish button and current cash tracker
         JPanel finishPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        setUserCash(1500);
         //finishPanel.add(cashTrackerLabel);
-        cashTrackerLabel = new JLabel();
-        cashTrackerLabel.setText("Current cash:" + cashTrackerLabel.getText());
+        cashTracker = new JLabel("Current cash:" + cashTrackerLabel.getText());
         JButton btnDone = new JButton("Finish Adding Money");
-        finishPanel.add(cashTrackerLabel);
+        finishPanel.add(cashTracker);
         finishPanel.add(btnDone);
 
         // Buttons for each denomination
@@ -138,10 +155,9 @@ public class RegularVendingFeatures extends JFrame {
         btn5 = new JButton("5");
         btn1 = new JButton("1");
 
-
         btnDone.addActionListener(e -> {
             // TODO: Add code for "Done" functionality
-            JOptionPane.showMessageDialog(enterMoneyFrame, "You have entered P" + cashTrackerLabel.getText());
+            JOptionPane.showMessageDialog(enterMoneyFrame, "You have entered P"+cashTrackerLabel.getText());
             enterMoneyFrame.dispose();
         });
 
@@ -174,6 +190,16 @@ public class RegularVendingFeatures extends JFrame {
     }
 
     public void setActionListener (ActionListener listener){
+        btn1000 = new JButton("1000");
+        btn500 = new JButton("500");
+        btn200 = new JButton("200");
+        btn100 = new JButton("100");
+        btn50 = new JButton("50");
+        btn20 = new JButton("20");
+        btn10 = new JButton("10");
+        btn5 = new JButton("5");
+        btn1 = new JButton("1");
+
         // Action listeners
         btn1000.addActionListener(listener);
         btn500.addActionListener(listener);

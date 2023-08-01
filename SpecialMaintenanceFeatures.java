@@ -10,6 +10,21 @@ public class SpecialMaintenanceFeatures extends JFrame {
     private JButton replenishChangeButton;
     private JButton printSummaryButton;
     private JButton backButton;
+
+    public SpecialMaintenanceFeatures() {
+        // title
+        super("Special Vending Machine Features");
+        setLayout(new BorderLayout());
+
+        setSize(300, 300);
+
+        showSpecialMaintenanceOptions(this);
+
+        setVisible(true);
+        setResizable(false);
+
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
     public void showSpecialMaintenanceOptions(JFrame parentFrame) {
         // Create a new JFrame for displaying the options
         JFrame specialMaintenanceOptionsFrame = new JFrame("Maintenance Features");

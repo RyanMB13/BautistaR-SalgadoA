@@ -24,7 +24,21 @@ public class SpecialVendingFeatures extends JFrame {
 
     private JLabel cashTrackerLabel;
 
-    public void showSpecialFeaturesOptions(JFrame parentFrame) {
+    public SpecialVendingFeatures() {
+        // title
+        super("Special Vending Machine Features");
+        setLayout(new BorderLayout());
+
+        setSize(300, 300);
+        showSpecialFeaturesOptions(this);
+
+        setVisible(true);
+        setResizable(false);
+
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+
+        public void showSpecialFeaturesOptions(JFrame parentFrame) {
         // Create a new JFrame for displaying the options
         JFrame specialFeaturesOptionsFrame = new JFrame("Special Vending Machine Features");
         specialFeaturesOptionsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
