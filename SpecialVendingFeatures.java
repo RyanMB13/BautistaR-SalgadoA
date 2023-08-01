@@ -116,7 +116,7 @@ public class SpecialVendingFeatures extends JFrame {
 
         // Inner Panel for the Finish button and current cash tracker
         JPanel finishPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        cashTrackerLabel = new JLabel();
+        setUserCash(10000);
         finishPanel.add(cashTrackerLabel);
         JButton btnDone = new JButton("Finish Adding Money");
         finishPanel.add(btnDone);
@@ -197,6 +197,7 @@ public class SpecialVendingFeatures extends JFrame {
 
     public void setUserCash(double userCash){
         // Sets the text at the bottom of Enter Money to whatever the userCash is.
+        cashTrackerLabel = new JLabel();
         cashTrackerLabel.setText("Current Cash: ₱" + userCash);
     }
 

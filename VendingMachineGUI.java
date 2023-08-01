@@ -38,8 +38,8 @@ public class VendingMachineGUI extends JFrame {
         buttonPanel.setBorder(new EmptyBorder(0, padding, padding, padding));
 
         // Buttons for the main menu options
-        createButton = new JButton("Create vending machine");
-        testButton = new JButton("Test features");
+        createButton = new JButton("Create Vending Machine");
+        testButton = new JButton("Test Features");
         exitButton = new JButton("Exit");
 
         // Center align the buttons

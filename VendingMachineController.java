@@ -26,7 +26,7 @@ public class VendingMachineController implements ActionListener, DocumentListene
         this.regularVM = regularVM;
         this.specialVM = specialVM;
 
-        updateView();
+
         /*
         GUI.setActionListener(this);
         GUI2.setActionListener(this);
@@ -47,13 +47,9 @@ public class VendingMachineController implements ActionListener, DocumentListene
 
     }
 
-    public void updateView(){
+    public void updateEnterMoneyView(){
         // Regular Vending Machine
         gui3.setUserCash(regularVM.getUserCash()); // Updates current cash display in enter money menu
-
-
-
-
         // Special Vending Machine
         gui5.setUserCash(specialVM.getUserCash()); // Updates current cash display in enter money menu
     }

@@ -78,12 +78,12 @@ public class VendingMachineOptions extends JFrame {
         testOptionsPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         // Label for the title
-        JLabel titleLabel = new JLabel("Test features:");
+        JLabel titleLabel = new JLabel("Test Features:");
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         testOptionsPanel.add(titleLabel);
 
         // Buttons for the test feature options
-        vendingMachineButton = new JButton("Vending machine features");
+        vendingMachineButton = new JButton("Vending Machine Features");
         maintenanceButton = new JButton("Maintenance Features");
         exitTestButton = new JButton("Exit");
 
