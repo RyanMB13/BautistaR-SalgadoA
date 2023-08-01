@@ -5,24 +5,12 @@ import java.awt.event.ActionListener;
 
 public class VendingMachineController implements ActionListener, DocumentListener {
     private final VendingMachineGUI gui1; // View
-    private final VendingMachineOptions gui2; // View
-    private final RegularVendingFeatures gui3; // View
-    private final RegularMaintenanceFeatures gui4; // View
-    private final SpecialVendingFeatures  gui5; // View
-    private final SpecialMaintenanceFeatures gui6; // View
     private final VendingMachine regularVM; // Model
     private final SpecialVendingMachine specialVM; // Model
 
-    public VendingMachineController(VendingMachineGUI gui1, VendingMachineOptions gui2, RegularVendingFeatures gui3,
-                                    RegularMaintenanceFeatures gui4, SpecialVendingFeatures gui5, SpecialMaintenanceFeatures
-                                            gui6, VendingMachine regularVM, SpecialVendingMachine specialVM){
+    public VendingMachineController(VendingMachineGUI gui1, VendingMachine regularVM, SpecialVendingMachine specialVM){
 
         this.gui1 = gui1;
-        this.gui2 = gui2;
-        this.gui3 = gui3;
-        this.gui4 = gui4;
-        this.gui5 = gui5;
-        this.gui6 = gui6;
         this.regularVM = regularVM;
         this.specialVM = specialVM;
 
@@ -43,37 +31,85 @@ public class VendingMachineController implements ActionListener, DocumentListene
         GUI6.setDocumentListener(this);
         */
 
-        gui3.setActionListener(this);
-        gui5.setActionListener(this);
-
-
 
     }
 
     public void updateEnterMoneyView(){
         // Regular Vending Machine
-        gui3.setUserCash(regularVM.getUserCash()); // Updates current cash display in enter money menu
+       // gui3.setUserCash(regularVM.getUserCash()); // Updates current cash display in enter money menu
         // Special Vending Machine
-        gui5.setUserCash(specialVM.getUserCash()); // Updates current cash display in enter money menu
+       // gui5.setUserCash(specialVM.getUserCash()); // Updates current cash display in enter money menu
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("1000")){
-            regularVM.setUserCash(regularVM.getUserCash() + 1000);
-        }
-        else if (e.getActionCommand().equals("500")){
-            regularVM.setUserCash(regularVM.getUserCash() + 500);
-        }
-        else if (e.getActionCommand().equals("200")){
-            regularVM.setUserCash(regularVM.getUserCash() + 200);
-        }
-        else if (e.getActionCommand().equals("100")){
-            regularVM.setUserCash(regularVM.getUserCash() + 100);
-        }
-        else if (e.getActionCommand().equals("50")){
-            regularVM.setUserCash(regularVM.getUserCash() + 50);
+        if (e.getActionCommand().equals("1000")) {
+            regularVM.userCashList.get(0).setQuantity(regularVM.userCashList.get(0).getQuantity() + 1);
+            regularVM.paymentList.get(0).setQuantity(regularVM.paymentList.get(0).getQuantity() + 1);
+            specialVM.userCashList.get(0).setQuantity(specialVM.userCashList.get(0).getQuantity() + 1);
+            specialVM.paymentList.get(0).setQuantity(specialVM.paymentList.get(0).getQuantity() + 1);
+            System.out.println("ISANG LIBO");
+            updateEnterMoneyView();
+        } else if (e.getActionCommand().equals("500")) {
+            regularVM.userCashList.get(1).setQuantity(regularVM.userCashList.get(1).getQuantity() + 1);
+            regularVM.paymentList.get(1).setQuantity(regularVM.paymentList.get(1).getQuantity() + 1);
+            specialVM.userCashList.get(1).setQuantity(specialVM.userCashList.get(1).getQuantity() + 1);
+            specialVM.paymentList.get(1).setQuantity(specialVM.paymentList.get(1).getQuantity() + 1);
+            updateEnterMoneyView();
+        } else if (e.getActionCommand().equals("200")) {
+            regularVM.userCashList.get(2).setQuantity(regularVM.userCashList.get(2).getQuantity() + 1);
+            regularVM.paymentList.get(2).setQuantity(regularVM.paymentList.get(2).getQuantity() + 1);
+            specialVM.userCashList.get(2).setQuantity(specialVM.userCashList.get(2).getQuantity() + 1);
+            specialVM.paymentList.get(2).setQuantity(specialVM.paymentList.get(2).getQuantity() + 1);
+            updateEnterMoneyView();
+        } else if (e.getActionCommand().equals("100")) {
+            regularVM.userCashList.get(3).setQuantity(regularVM.userCashList.get(3).getQuantity() + 1);
+            regularVM.paymentList.get(3).setQuantity(regularVM.paymentList.get(3).getQuantity() + 1);
+            specialVM.userCashList.get(3).setQuantity(specialVM.userCashList.get(3).getQuantity() + 1);
+            specialVM.paymentList.get(3).setQuantity(specialVM.paymentList.get(3).getQuantity() + 1);
+            updateEnterMoneyView();
+        } else if (e.getActionCommand().equals("50")) {
+            regularVM.userCashList.get(4).setQuantity(regularVM.userCashList.get(4).getQuantity() + 1);
+            regularVM.paymentList.get(4).setQuantity(regularVM.paymentList.get(4).getQuantity() + 1);
+            specialVM.userCashList.get(4).setQuantity(specialVM.userCashList.get(4).getQuantity() + 1);
+            specialVM.paymentList.get(4).setQuantity(specialVM.paymentList.get(4).getQuantity() + 1);
+            updateEnterMoneyView();
+        } else if (e.getActionCommand().equals("20")) {
+            regularVM.userCashList.get(5).setQuantity(regularVM.userCashList.get(5).getQuantity() + 1);
+            regularVM.paymentList.get(5).setQuantity(regularVM.paymentList.get(5).getQuantity() + 1);
+            specialVM.userCashList.get(5).setQuantity(specialVM.userCashList.get(5).getQuantity() + 1);
+            specialVM.paymentList.get(5).setQuantity(specialVM.paymentList.get(5).getQuantity() + 1);
+            updateEnterMoneyView();
+        } else if (e.getActionCommand().equals("10")) {
+            regularVM.userCashList.get(6).setQuantity(regularVM.userCashList.get(6).getQuantity() + 1);
+            regularVM.paymentList.get(6).setQuantity(regularVM.paymentList.get(6).getQuantity() + 1);
+            specialVM.userCashList.get(6).setQuantity(specialVM.userCashList.get(6).getQuantity() + 1);
+            specialVM.paymentList.get(6).setQuantity(specialVM.paymentList.get(6).getQuantity() + 1);
+            updateEnterMoneyView();
+        } else if (e.getActionCommand().equals("5")) {
+            regularVM.userCashList.get(7).setQuantity(regularVM.userCashList.get(7).getQuantity() + 1);
+            regularVM.paymentList.get(7).setQuantity(regularVM.paymentList.get(7).getQuantity() + 1);
+            specialVM.userCashList.get(7).setQuantity(specialVM.userCashList.get(7).getQuantity() + 1);
+            specialVM.paymentList.get(7).setQuantity(specialVM.paymentList.get(7).getQuantity() + 1);
+            updateEnterMoneyView();
+        } else if (e.getActionCommand().equals("1")) {
+            regularVM.userCashList.get(8).setQuantity(regularVM.userCashList.get(8).getQuantity() + 1);
+            regularVM.paymentList.get(8).setQuantity(regularVM.paymentList.get(8).getQuantity() + 1);
+            specialVM.userCashList.get(8).setQuantity(specialVM.userCashList.get(8).getQuantity() + 1);
+            specialVM.paymentList.get(8).setQuantity(specialVM.paymentList.get(8).getQuantity() + 1);
+            updateEnterMoneyView();
+        } else if (e.getActionCommand().equals("Finish Adding Money")){
+            double totalCash = 0;
+            for (Money money : regularVM.userCashList) {
+                totalCash += money.getValue() * money.getQuantity();
+            }
+            for (Money money : specialVM.userCashList) {
+                totalCash += money.getValue() * money.getQuantity();
+            }
+            regularVM.setUserCash(totalCash);
+            specialVM.setUserCash(totalCash);
+            updateEnterMoneyView();
         }
 
     }
