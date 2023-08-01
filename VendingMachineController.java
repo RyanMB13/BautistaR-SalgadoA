@@ -26,6 +26,7 @@ public class VendingMachineController implements ActionListener, DocumentListene
         this.regularVM = regularVM;
         this.specialVM = specialVM;
 
+        updateEnterMoneyView();
 
         /*
         GUI.setActionListener(this);
@@ -42,6 +43,8 @@ public class VendingMachineController implements ActionListener, DocumentListene
         GUI6.setDocumentListener(this);
         */
 
+        gui3.setActionListener(this);
+        gui5.setActionListener(this);
 
 
 
@@ -55,10 +58,23 @@ public class VendingMachineController implements ActionListener, DocumentListene
     }
 
 
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("1000")){
+            regularVM.setUserCash(regularVM.getUserCash() + 1000);
+        }
+        else if (e.getActionCommand().equals("500")){
+            regularVM.setUserCash(regularVM.getUserCash() + 500);
+        }
+        else if (e.getActionCommand().equals("200")){
+            regularVM.setUserCash(regularVM.getUserCash() + 200);
+        }
+        else if (e.getActionCommand().equals("100")){
+            regularVM.setUserCash(regularVM.getUserCash() + 100);
+        }
+        else if (e.getActionCommand().equals("50")){
+            regularVM.setUserCash(regularVM.getUserCash() + 50);
+        }
 
     }
 

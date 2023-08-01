@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class RegularVendingFeatures extends JFrame {
 
@@ -20,7 +21,6 @@ public class RegularVendingFeatures extends JFrame {
     private JButton btnDone;
 
     private JLabel cashTrackerLabel;
-
 
 
     public void showRegFeatureOptions(JFrame parentFrame) {
@@ -122,24 +122,63 @@ public class RegularVendingFeatures extends JFrame {
         // Inner Panel for the Finish button and current cash tracker
         JPanel finishPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         setUserCash(1500);
-        finishPanel.add(cashTrackerLabel);
+        //finishPanel.add(cashTrackerLabel);
+        JLabel cashTracker = new JLabel("Current cash:" + cashTrackerLabel.getText());
         JButton btnDone = new JButton("Finish Adding Money");
+        finishPanel.add(cashTracker);
         finishPanel.add(btnDone);
 
-        // Buttons each denomination
-        JButton btn1000 = new JButton("1000");
-        JButton btn500 = new JButton("500");
-        JButton btn200 = new JButton("200");
-        JButton btn100 = new JButton("100");
-        JButton btn50 = new JButton("50");
-        JButton btn20 = new JButton("20");
-        JButton btn10 = new JButton("10");
-        JButton btn5 = new JButton("5");
-        JButton btn1 = new JButton("1");
 
+        // Buttons each denomination
+        btn1000 = new JButton("1000");
+        btn500 = new JButton("500");
+        btn200 = new JButton("200");
+        btn100 = new JButton("100");
+        btn50 = new JButton("50");
+        btn20 = new JButton("20");
+        btn10 = new JButton("10");
+        btn5 = new JButton("5");
+        btn1 = new JButton("1");
+
+        btnDone.addActionListener(e -> {
+            // TODO: Add code for "Done" functionality
+            JOptionPane.showMessageDialog(enterMoneyFrame, "You have entered P"+cashTrackerLabel.getText());
+            enterMoneyFrame.dispose();
+        });
+
+
+        // Add buttons to the panel with 3 buttons per row
+        enterMoneyButtonPanel.add(btn1000);
+        enterMoneyButtonPanel.add(btn500);
+        enterMoneyButtonPanel.add(btn200);
+        enterMoneyButtonPanel.add(btn100);
+        enterMoneyButtonPanel.add(btn50);
+        enterMoneyButtonPanel.add(btn20);
+        enterMoneyButtonPanel.add(btn10);
+        enterMoneyButtonPanel.add(btn5);
+        enterMoneyButtonPanel.add(btn1);
+
+        // Add the components to the panels and the frame
+        enterMoneyFrame.add(labelPanel, BorderLayout.NORTH);
+        enterMoneyFrame.add(enterMoneyButtonPanel, BorderLayout.CENTER);
+        enterMoneyFrame.add(finishPanel, BorderLayout.SOUTH);
+
+        // Pack and set visible
+        enterMoneyFrame.setLocationRelativeTo(parentFrame);
+        enterMoneyFrame.setVisible(true);
+    }
+
+    public void setUserCash(double userCash){
+        // Sets the text at the bottom of Enter Money to whatever the userCash is.
+            cashTrackerLabel = new JLabel();
+            cashTrackerLabel.setText(String.valueOf(userCash));
+    }
+
+    public void setActionListener (ActionListener listener){
         // Action listeners
         btn1000.addActionListener(e -> {
             // TODO: Add code for "1000" functionality
+            btn1000 = new JButton();
         });
 
         btn500.addActionListener(e -> {
@@ -173,36 +212,5 @@ public class RegularVendingFeatures extends JFrame {
             // TODO: Add code for "1" functionality
         });
 
-        btnDone.addActionListener(e -> {
-            // TODO: Add code for "Done" functionality
-            JOptionPane.showMessageDialog(enterMoneyFrame, "You have entered P + current cash");
-            enterMoneyFrame.dispose();
-        });
-
-        // Add buttons to the panel with 3 buttons per row
-        enterMoneyButtonPanel.add(btn1000);
-        enterMoneyButtonPanel.add(btn500);
-        enterMoneyButtonPanel.add(btn200);
-        enterMoneyButtonPanel.add(btn100);
-        enterMoneyButtonPanel.add(btn50);
-        enterMoneyButtonPanel.add(btn20);
-        enterMoneyButtonPanel.add(btn10);
-        enterMoneyButtonPanel.add(btn5);
-        enterMoneyButtonPanel.add(btn1);
-
-        // Add the components to the panels and the frame
-        enterMoneyFrame.add(labelPanel, BorderLayout.NORTH);
-        enterMoneyFrame.add(enterMoneyButtonPanel, BorderLayout.CENTER);
-        enterMoneyFrame.add(finishPanel, BorderLayout.SOUTH);
-
-        // Pack and set visible
-        enterMoneyFrame.setLocationRelativeTo(parentFrame);
-        enterMoneyFrame.setVisible(true);
-    }
-
-    public void setUserCash(double userCash){
-        // Sets the text at the bottom of Enter Money to whatever the userCash is.
-            cashTrackerLabel = new JLabel();
-            cashTrackerLabel.setText("Current Cash: ₱" + userCash);
     }
 }
