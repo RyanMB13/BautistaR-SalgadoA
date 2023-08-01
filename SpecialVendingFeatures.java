@@ -180,41 +180,26 @@ public class SpecialVendingFeatures extends JFrame {
     }
 
     public void setActionListener (ActionListener listener){
+        btn1000 = new JButton("1000");
+        btn500 = new JButton("500");
+        btn200 = new JButton("200");
+        btn100 = new JButton("100");
+        btn50 = new JButton("50");
+        btn20 = new JButton("20");
+        btn10 = new JButton("10");
+        btn5 = new JButton("5");
+        btn1 = new JButton("1");
+
         // Action listeners
-        btn1000.addActionListener(e -> {
-            // TODO: Add code for "1000" functionality
-        });
-
-        btn500.addActionListener(e -> {
-            // TODO: Add code for "500" functionality
-        });
-
-        btn200.addActionListener(e -> {
-            // TODO: Add code for "200" functionality
-        });
-
-        btn100.addActionListener(e -> {
-            // TODO: Add code for "100" functionality
-        });
-
-        btn50.addActionListener(e -> {
-            // TODO: Add code for "50" functionality
-        });
-
-        btn20.addActionListener(e -> {
-            // TODO: Add code for "20" functionality
-        });
-
-        btn10.addActionListener(e -> {
-            // TODO: Add code for "10" functionality
-        });
-        btn5.addActionListener(e -> {
-            // TODO: Add code for "5" functionality
-        });
-
-        btn1.addActionListener(e -> {
-            // TODO: Add code for "1" functionality
-        });
+        btn1000.addActionListener(listener);
+        btn500.addActionListener(listener);
+        btn200.addActionListener(listener);
+        btn100.addActionListener(listener);
+        btn50.addActionListener(listener);
+        btn20.addActionListener(listener);
+        btn10.addActionListener(listener);
+        btn5.addActionListener(listener);
+        btn1.addActionListener(listener);
 
     }
 }

@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class RegularVendingFeatures extends JFrame {
-
     private JButton enterMoneyButton;
     private JButton displayItemsButton;
     private JButton purchaseItemButton;
@@ -19,8 +18,8 @@ public class RegularVendingFeatures extends JFrame {
     private JButton btn5;
     private JButton btn1;
     private JButton btnDone;
-
     private JLabel cashTrackerLabel;
+    private JLabel cashTracker;
 
 
     public void showRegFeatureOptions(JFrame parentFrame) {
@@ -121,15 +120,14 @@ public class RegularVendingFeatures extends JFrame {
 
         // Inner Panel for the Finish button and current cash tracker
         JPanel finishPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        setUserCash(1500);
         //finishPanel.add(cashTrackerLabel);
-        JLabel cashTracker = new JLabel("Current cash:" + cashTrackerLabel.getText());
+        cashTrackerLabel = new JLabel();
+        cashTrackerLabel.setText("Current cash:" + cashTrackerLabel.getText());
         JButton btnDone = new JButton("Finish Adding Money");
-        finishPanel.add(cashTracker);
+        finishPanel.add(cashTrackerLabel);
         finishPanel.add(btnDone);
 
-
-        // Buttons each denomination
+        // Buttons for each denomination
         btn1000 = new JButton("1000");
         btn500 = new JButton("500");
         btn200 = new JButton("200");
@@ -140,9 +138,10 @@ public class RegularVendingFeatures extends JFrame {
         btn5 = new JButton("5");
         btn1 = new JButton("1");
 
+
         btnDone.addActionListener(e -> {
             // TODO: Add code for "Done" functionality
-            JOptionPane.showMessageDialog(enterMoneyFrame, "You have entered P"+cashTrackerLabel.getText());
+            JOptionPane.showMessageDialog(enterMoneyFrame, "You have entered P" + cashTrackerLabel.getText());
             enterMoneyFrame.dispose();
         });
 
@@ -176,41 +175,15 @@ public class RegularVendingFeatures extends JFrame {
 
     public void setActionListener (ActionListener listener){
         // Action listeners
-        btn1000.addActionListener(e -> {
-            // TODO: Add code for "1000" functionality
-            btn1000 = new JButton();
-        });
-
-        btn500.addActionListener(e -> {
-            // TODO: Add code for "500" functionality
-        });
-
-        btn200.addActionListener(e -> {
-            // TODO: Add code for "200" functionality
-        });
-
-        btn100.addActionListener(e -> {
-            // TODO: Add code for "100" functionality
-        });
-
-        btn50.addActionListener(e -> {
-            // TODO: Add code for "50" functionality
-        });
-
-        btn20.addActionListener(e -> {
-            // TODO: Add code for "20" functionality
-        });
-
-        btn10.addActionListener(e -> {
-            // TODO: Add code for "10" functionality
-        });
-        btn5.addActionListener(e -> {
-            // TODO: Add code for "5" functionality
-        });
-
-        btn1.addActionListener(e -> {
-            // TODO: Add code for "1" functionality
-        });
+        btn1000.addActionListener(listener);
+        btn500.addActionListener(listener);
+        btn200.addActionListener(listener);
+        btn100.addActionListener(listener);
+        btn50.addActionListener(listener);
+        btn20.addActionListener(listener);
+        btn10.addActionListener(listener);
+        btn5.addActionListener(listener);
+        btn1.addActionListener(listener);
 
     }
 }
