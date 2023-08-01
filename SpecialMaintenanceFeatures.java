@@ -18,9 +18,6 @@ public class SpecialMaintenanceFeatures extends JFrame {
 
         setSize(300, 300);
 
-        showSpecialMaintenanceOptions(this);
-
-        setVisible(true);
         setResizable(false);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

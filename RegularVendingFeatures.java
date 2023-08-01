@@ -30,9 +30,6 @@ public class RegularVendingFeatures extends JFrame {
 
         setSize(300, 300);
 
-        showRegFeatureOptions(this);
-
-        setVisible(true);
         setResizable(false);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

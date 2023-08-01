@@ -18,9 +18,6 @@ public class RegularMaintenanceFeatures extends JFrame {
 
         setSize(300, 300);
 
-        showRegMaintenanceOptions(this);
-
-        setVisible(true);
         setResizable(false);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

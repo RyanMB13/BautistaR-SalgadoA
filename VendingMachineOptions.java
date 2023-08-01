@@ -16,9 +16,7 @@ public class VendingMachineOptions extends JFrame {
         setLayout(new BorderLayout());
 
         setSize(300, 200);
-        vendingTypes(this);
 
-        setVisible(true);
         setResizable(false);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

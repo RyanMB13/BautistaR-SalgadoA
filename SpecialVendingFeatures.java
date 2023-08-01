@@ -30,9 +30,7 @@ public class SpecialVendingFeatures extends JFrame {
         setLayout(new BorderLayout());
 
         setSize(300, 300);
-        showSpecialFeaturesOptions(this);
 
-        setVisible(true);
         setResizable(false);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
