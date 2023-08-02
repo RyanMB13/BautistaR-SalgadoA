@@ -36,7 +36,7 @@ public class RegularVendingFeatures extends JFrame {
 
     }
 
-    public void showRegFeatureOptions(JFrame parentFrame) {
+    public void init() {
         // Create a new JFrame for displaying the options
         JFrame regFeaturesOptionsFrame = new JFrame("Regular Vending Machine Features");
         regFeaturesOptionsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -55,11 +55,11 @@ public class RegularVendingFeatures extends JFrame {
         regFeaturesOptionsPanel.add(titleLabel);
 
         // Buttons for the regular vending machine features
-        enterMoneyButton = new JButton("Enter Money");
-        displayItemsButton = new JButton("Display Items");
-        purchaseItemButton = new JButton("Purchase Item");
-        produceChangeButton = new JButton("Produce Change");
-        backButton = new JButton("Back to Test Menu");
+        JButton enterMoneyButton = new JButton("Enter Money");
+        JButton displayItemsButton = new JButton("Display Items");
+        JButton purchaseItemButton = new JButton("Purchase Item");
+        JButton produceChangeButton = new JButton("Produce Change");
+        JButton backButton = new JButton("Back to Test Menu");
 
         // Center align the buttons
         enterMoneyButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -72,7 +72,7 @@ public class RegularVendingFeatures extends JFrame {
         enterMoneyButton.addActionListener(e -> {
             // TODO: Add code for "Enter Money" functionality
             RegularVendingFeatures enterMoney = new RegularVendingFeatures();
-            enterMoney.enterMoney(parentFrame);
+            enterMoney.enterMoney(regFeaturesOptionsFrame);
         });
 
         displayItemsButton.addActionListener(e -> {
@@ -107,7 +107,7 @@ public class RegularVendingFeatures extends JFrame {
 
         // Pack and set visible
         regFeaturesOptionsFrame.pack();
-        regFeaturesOptionsFrame.setLocationRelativeTo(parentFrame);
+        regFeaturesOptionsFrame.setLocationRelativeTo(null); // Center on screen
         regFeaturesOptionsFrame.setVisible(true);
     }
 

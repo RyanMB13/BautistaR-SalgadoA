@@ -22,7 +22,7 @@ public class SpecialMaintenanceFeatures extends JFrame {
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-    public void showSpecialMaintenanceOptions(JFrame parentFrame) {
+    public void init() {
         // Create a new JFrame for displaying the options
         JFrame specialMaintenanceOptionsFrame = new JFrame("Maintenance Features");
         specialMaintenanceOptionsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -112,7 +112,7 @@ public class SpecialMaintenanceFeatures extends JFrame {
         specialMaintenanceOptionsFrame.add(specialMaintenanceOptionsPanel, BorderLayout.CENTER);
 
         // Pack and set visible
-        specialMaintenanceOptionsFrame.setLocationRelativeTo(parentFrame);
+        specialMaintenanceOptionsFrame.setLocationRelativeTo(null);//keep it centered
         specialMaintenanceOptionsFrame.setVisible(true);
     }
 }

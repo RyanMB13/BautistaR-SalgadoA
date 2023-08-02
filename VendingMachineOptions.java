@@ -114,10 +114,10 @@ public class VendingMachineOptions extends JFrame {
             // Call the appropriate method based on the vending machine type
             if (isRegularVendingMachine) {
                 RegularVendingFeatures features = new RegularVendingFeatures();
-                features.showRegFeatureOptions(parentFrame);
+                features.init();
             } else {
                 SpecialVendingFeatures features = new SpecialVendingFeatures();
-                features.showSpecialFeaturesOptions(parentFrame);
+                features.init();
             }
         });
 
@@ -129,10 +129,10 @@ public class VendingMachineOptions extends JFrame {
             // Call the appropriate method based on the vending machine type
             if (isRegularVendingMachine) {
                 RegularMaintenanceFeatures features = new RegularMaintenanceFeatures();
-                features.showRegMaintenanceOptions(parentFrame);
+                features.init();
             } else {
                 SpecialMaintenanceFeatures features = new SpecialMaintenanceFeatures();
-                features.showSpecialMaintenanceOptions(parentFrame);
+                features.init();
             }
         });
 

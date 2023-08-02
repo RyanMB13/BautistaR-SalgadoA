@@ -36,7 +36,7 @@ public class SpecialVendingFeatures extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-        public void showSpecialFeaturesOptions(JFrame parentFrame) {
+        public void init() {
         // Create a new JFrame for displaying the options
         JFrame specialFeaturesOptionsFrame = new JFrame("Special Vending Machine Features");
         specialFeaturesOptionsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -74,7 +74,7 @@ public class SpecialVendingFeatures extends JFrame {
         enterMoneyButton.addActionListener(e -> {
             // TODO: Add code for "Enter Money" functionality
             SpecialVendingFeatures enterMoney = new SpecialVendingFeatures();
-            enterMoney.enterMoney(parentFrame);
+            enterMoney.enterMoney();
         });
 
         displayItemsButton.addActionListener(e -> {
@@ -114,10 +114,10 @@ public class SpecialVendingFeatures extends JFrame {
         specialFeaturesOptionsFrame.add(specialFeaturesOptionsPanel, BorderLayout.CENTER);
 
         // Pack and set visible
-        specialFeaturesOptionsFrame.setLocationRelativeTo(parentFrame);
+        specialFeaturesOptionsFrame.setLocationRelativeTo(null);
         specialFeaturesOptionsFrame.setVisible(true);
     }
-    public void enterMoney(JFrame parentFrame) {
+    public void enterMoney() {
         JFrame enterMoneyFrame = new JFrame("Enter Money");
         enterMoneyFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         enterMoneyFrame.setSize(400, 500);
@@ -181,7 +181,7 @@ public class SpecialVendingFeatures extends JFrame {
         enterMoneyFrame.add(finishPanel, BorderLayout.SOUTH);
 
         // Pack and set visible
-        enterMoneyFrame.setLocationRelativeTo(parentFrame);
+        enterMoneyFrame.setLocationRelativeTo(null);
         enterMoneyFrame.setVisible(true);
     }
 

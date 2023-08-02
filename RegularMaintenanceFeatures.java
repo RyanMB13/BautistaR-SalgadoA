@@ -23,7 +23,7 @@ public class RegularMaintenanceFeatures extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }
-    public void showRegMaintenanceOptions(JFrame parentFrame) {
+    public void init() {
         // Create a new JFrame for displaying the options
         JFrame regMaintenanceOptionsFrame = new JFrame("Maintenance Features");
         regMaintenanceOptionsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -106,7 +106,7 @@ public class RegularMaintenanceFeatures extends JFrame {
         regMaintenanceOptionsFrame.add(regMaintenanceOptionsPanel, BorderLayout.CENTER);
 
         // Pack and set visible
-        regMaintenanceOptionsFrame.setLocationRelativeTo(parentFrame);
+        regMaintenanceOptionsFrame.setLocationRelativeTo(null);
         regMaintenanceOptionsFrame.setVisible(true);
     }
 }
