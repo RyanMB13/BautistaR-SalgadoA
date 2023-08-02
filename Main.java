@@ -3,17 +3,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        VendingMachineGUI gui1 = new VendingMachineGUI();
-        VendingMachineOptions gui2 = new VendingMachineOptions();
-        RegularVendingFeatures gui3 = new RegularVendingFeatures();
-        RegularMaintenanceFeatures gui4 = new RegularMaintenanceFeatures();
-        SpecialVendingFeatures gui5 = new SpecialVendingFeatures();
-        SpecialMaintenanceFeatures gui6 = new SpecialMaintenanceFeatures();
-        VendingMachine regularVM = new VendingMachine();
-        SpecialVendingMachine specialVM = new SpecialVendingMachine();
-
-        VendingMachineController controller = new VendingMachineController(gui1, gui2, gui3, gui4, gui5, gui6,
-                regularVM, specialVM);
+        VendingMachineGUI gui = new VendingMachineGUI();
+        VMGUIController controller = new VMGUIController(gui);
     }
 }
 /*

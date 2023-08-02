@@ -11,7 +11,6 @@ public class ItemDisplayGUI extends JFrame {
 
     public ItemDisplayGUI(List<Item> uniqueItemList) {
         this.uniqueItemList = uniqueItemList;
-
         initializeGUI();
     }
 
@@ -67,6 +66,7 @@ public class ItemDisplayGUI extends JFrame {
         setVisible(true);
     }
 
+
     // You can implement the countStock method according to your requirements
     private int countStock(String itemName) {
         // Implement the logic to count stock for a specific item here
@@ -104,12 +104,37 @@ public class ItemDisplayGUI extends JFrame {
         dispose();
     }
 
+    private void showPurchaseConfirmation(String itemName) {
+        JOptionPane.showMessageDialog(this, "You have bought " + itemName,
+                "Purchase Confirmation", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+
     public static void main(String[] args) {
         // Replace this with your actual list of items
         List<Item> uniqueItemList = new ArrayList<>();
         uniqueItemList.add(new Item("Item1", 100, 2.99));
         uniqueItemList.add(new Item("Item2", 150, 4.99));
         uniqueItemList.add(new Item("Item3", 200, 3.49));
+        uniqueItemList.add(new Item("Item4", 100, 2.99));
+        uniqueItemList.add(new Item("Item5", 150, 4.99));
+        uniqueItemList.add(new Item("Item6", 200, 3.49));
+        uniqueItemList.add(new Item("Item7", 100, 2.99));
+        uniqueItemList.add(new Item("Item8", 150, 4.99));
+        uniqueItemList.add(new Item("Item9", 200, 3.49));
+        uniqueItemList.add(new Item("Item10", 100, 2.99));
+        uniqueItemList.add(new Item("Item11", 150, 4.99));
+        uniqueItemList.add(new Item("Item12", 200, 3.49));
+        uniqueItemList.add(new Item("Item13", 100, 2.99));
+        uniqueItemList.add(new Item("Item14", 150, 4.99));
+        uniqueItemList.add(new Item("Item15", 200, 3.49));
+        uniqueItemList.add(new Item("Item16", 100, 2.99));
+        uniqueItemList.add(new Item("Item17", 150, 4.99));
+        uniqueItemList.add(new Item("Item18", 200, 3.49));
+        uniqueItemList.add(new Item("Item19", 100, 2.99));
+        uniqueItemList.add(new Item("Item20", 150, 4.99));
+        uniqueItemList.add(new Item("Item21", 200, 3.49));
+
 
         SwingUtilities.invokeLater(() -> new ItemDisplayGUI(uniqueItemList));
     }
