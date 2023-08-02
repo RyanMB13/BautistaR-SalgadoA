@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 public class VMGUIController implements ActionListener {
     private final VendingMachineGUI gui; // View
+    private boolean VMCreated = false;
     public VMGUIController(VendingMachineGUI gui){
         this.gui = gui;
         gui.setActionListener(this);
@@ -15,9 +16,9 @@ public class VMGUIController implements ActionListener {
             VendingMachineOptions VMOptions = new VendingMachineOptions();
             VMOptionsController VMOptionsController = new VMOptionsController(VMOptions);
             VMOptions.init();
-            gui.setVMCreated(true);
+            setVMCreated(true);
         } else if (e.getActionCommand().equals("Test Features")) {
-            if (gui.getVMCreated()){
+            if (getVMCreated()){
                 System.out.println("TEST FEATURES SUCCESS"); // incomplete code.
             } else {
                 JOptionPane.showMessageDialog(gui, "Vending Machine has not yet been created.","Vending Machine", JOptionPane.ERROR_MESSAGE);
@@ -26,4 +27,8 @@ public class VMGUIController implements ActionListener {
             System.exit(0);
         }
     }
+    public void setVMCreated(boolean created){
+        this.VMCreated = created;
+    }
+    public boolean getVMCreated(){ return this.VMCreated; }
 }

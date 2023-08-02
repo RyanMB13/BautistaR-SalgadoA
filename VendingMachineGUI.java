@@ -5,7 +5,6 @@ import javax.swing.border.EmptyBorder;
 
 
 public class VendingMachineGUI extends JFrame {
-    private boolean VMCreated = false;
     private final JButton createButton;
     private final JButton testButton;
     private final JButton exitButton;
@@ -62,9 +61,4 @@ public class VendingMachineGUI extends JFrame {
         testButton.addActionListener(listener);
         exitButton.addActionListener(listener);
     }
-
-    public void setVMCreated(boolean created){
-        this.VMCreated = created;
-    }
-    public boolean getVMCreated(){ return this.VMCreated; }
 }
