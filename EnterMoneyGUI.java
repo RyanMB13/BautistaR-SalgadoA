@@ -5,6 +5,15 @@ import java.awt.event.ActionListener;
 
 public class EnterMoneyGUI extends JFrame {
     private JLabel cashTrackerLabel;
+    private JButton btn1000;
+    private JButton btn500;
+    private JButton btn200;
+    private JButton btn100;
+    private JButton btn50;
+    private JButton btn20;
+    private JButton btn10;
+    private JButton btn5;
+    private JButton btn1;
 
     public EnterMoneyGUI() {
         // title
@@ -39,22 +48,22 @@ public class EnterMoneyGUI extends JFrame {
         finishPanel.add(btnDone);
 
         // Buttons each denomination
-        JButton btn1000 = new JButton("1000");
-        JButton btn500 = new JButton("500");
-        JButton btn200 = new JButton("200");
-        JButton btn100 = new JButton("100");
-        JButton btn50 = new JButton("50");
-        JButton btn20 = new JButton("20");
-        JButton btn10 = new JButton("10");
-        JButton btn5 = new JButton("5");
-        JButton btn1 = new JButton("1");
+        btn1000 = new JButton("1000");
+        btn500 = new JButton("500");
+        btn200 = new JButton("200");
+        btn100 = new JButton("100");
+        btn50 = new JButton("50");
+        btn20 = new JButton("20");
+        btn10 = new JButton("10");
+        btn5 = new JButton("5");
+        btn1 = new JButton("1");
 
         // Action listeners
         btnDone.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // TODO: Add code for "Done" functionality
-                JOptionPane.showMessageDialog(EnterMoneyGUI.this, "You have entered P + current cash");
+                JOptionPane.showMessageDialog(EnterMoneyGUI.this, "You have entered P "+cashTrackerLabel.getText());
                 dispose();
             }
         });
@@ -78,6 +87,19 @@ public class EnterMoneyGUI extends JFrame {
         // Pack and set visible
         setLocationRelativeTo(null);
         setVisible(true);
+    }
+    public void SetActionListener(ActionListener listener){
+
+
+        btn1000.addActionListener(listener);
+        btn500.addActionListener(listener);
+        btn200.addActionListener(listener);
+        btn100.addActionListener(listener);
+        btn50.addActionListener(listener);
+        btn20.addActionListener(listener);
+        btn10.addActionListener(listener);
+        btn5.addActionListener(listener);
+        btn1.addActionListener(listener);
     }
 
     public void setUserCash(double userCash) {

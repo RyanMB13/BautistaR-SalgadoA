@@ -5,6 +5,8 @@ public class RVendingFeaturesController implements ActionListener {
 
     private final RegularVendingFeatures gui; // View
 
+    private EnterMoneyGUI enterMoneyGUI;
+
     private final VendingMachine vendingMachine; // Model
 
     private final SpecialVendingMachine specialVendingMachine; //Model
@@ -23,7 +25,11 @@ public class RVendingFeaturesController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Enter Money")) {
-            System.out.print("You selected Enter Money");
+            EnterMoneyGUI enterMoneyGUI = new EnterMoneyGUI();
+
+            enterMoneyGUI.init();
+
+            EnterMoneyGUIController enterMoneyGUIControler = new EnterMoneyGUIController(enterMoneyGUI);
         } else if (e.getActionCommand().equals("Display Items")) {
             System.out.print("You selected Display Items");
         } else if (e.getActionCommand().equals("Purchase Item")) {
