@@ -13,13 +13,15 @@ public class VMGUIController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Create Vending Machine")) {
-            VendingMachineOptions VMOptions = new VendingMachineOptions();
-            VMOptionsController VMOptionsController = new VMOptionsController(VMOptions);
-            VMOptions.init();
             setVMCreated(true);
+            VendingMachineOptions VMOptions = new VendingMachineOptions();
+            VMOptions.init();
+            VMOptionsController VMOptionsController = new VMOptionsController(VMOptions);
         } else if (e.getActionCommand().equals("Test Features")) {
             if (getVMCreated()){
-                System.out.println("TEST FEATURES SUCCESS"); // incomplete code.
+                VendingMachineTestFeaturesOptions VMTFOptions = new VendingMachineTestFeaturesOptions(getVMCreated());
+                VMTFOptions.init();
+                VMTFOptionsController VMTFOptionsController = new VMTFOptionsController(VMTFOptions);
             } else {
                 JOptionPane.showMessageDialog(gui, "Vending Machine has not yet been created.","Vending Machine", JOptionPane.ERROR_MESSAGE);
             }

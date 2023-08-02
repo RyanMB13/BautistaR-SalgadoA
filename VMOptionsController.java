@@ -14,15 +14,15 @@ public class VMOptionsController implements ActionListener {
         if (e.getActionCommand().equals("Regular Vending Machine")) {
             setIsRegularVM(true);
             gui.RegularSelectedDisplay();
-            VendingMachineTestFeaturesOptions VMTestFeatures = new VendingMachineTestFeaturesOptions();
-            VMTFOptionsController VMTestFeaturesController = new VMTFOptionsController(VMTestFeatures);
+            VendingMachineTestFeaturesOptions VMTestFeatures = new VendingMachineTestFeaturesOptions(getIsRegularVM());
             VMTestFeatures.init();
+            VMTFOptionsController VMTestFeaturesController = new VMTFOptionsController(VMTestFeatures);
         } else if (e.getActionCommand().equals("Special Vending Machine")){
             setIsRegularVM(false);
             gui.SpecialSelectedDisplay();
-            VendingMachineTestFeaturesOptions VMTestFeatures = new VendingMachineTestFeaturesOptions();
-            VMTFOptionsController VMTestFeaturesController = new VMTFOptionsController(VMTestFeatures);
+            VendingMachineTestFeaturesOptions VMTestFeatures = new VendingMachineTestFeaturesOptions(getIsRegularVM());
             VMTestFeatures.init();
+            VMTFOptionsController VMTestFeaturesController = new VMTFOptionsController(VMTestFeatures);
         }
     }
 
