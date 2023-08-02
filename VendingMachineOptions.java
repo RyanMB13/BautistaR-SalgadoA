@@ -3,13 +3,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class VendingMachineOptions extends JFrame {
-
-    boolean isRegularVendingMachine = true;
     private JButton regularButton;
     private JButton specialButton;
-    private JButton vendingMachineButton;
-    private JButton maintenanceButton;
-    private JButton exitTestButton;
+    private JFrame optionsFrame;
 
     public VendingMachineOptions() {
         // Initialize the JFrame with a title
@@ -22,7 +18,7 @@ public class VendingMachineOptions extends JFrame {
 
     public void init() {
         // Create a new JFrame for displaying the options
-        JFrame optionsFrame = new JFrame("Vending Machine Options");
+        optionsFrame = new JFrame("Vending Machine Options");
         optionsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         optionsFrame.setSize(300, 200);
         optionsFrame.setLayout(new BorderLayout());
@@ -46,23 +42,6 @@ public class VendingMachineOptions extends JFrame {
         regularButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         specialButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Add action listeners to the buttons
-        regularButton.addActionListener(e -> {
-            // TODO: Add code for "Regular Vending Machine" functionality
-            JOptionPane.showMessageDialog(optionsFrame, "Regular Vending Machine selected!");
-            optionsFrame.dispose(); // Close the options frame after selection
-            setVisible(true); // Show the main menu frame again
-            isRegularVendingMachine = true;
-        });
-
-        specialButton.addActionListener(e -> {
-            // TODO: Add code for "Special Vending Machine" functionality
-            JOptionPane.showMessageDialog(optionsFrame, "Special Vending Machine selected!");
-            optionsFrame.dispose(); // Close the options frame after selection
-            setVisible(true); // Show the main menu frame again
-            isRegularVendingMachine = false;
-        });
-
         // Add buttons to the panel
         optionsPanel.add(regularButton);
         optionsPanel.add(specialButton);
@@ -75,85 +54,21 @@ public class VendingMachineOptions extends JFrame {
         optionsFrame.setLocationRelativeTo(null);
         optionsFrame.setVisible(true);
     }
-    public void testFeaturesOptions(JFrame parentFrame) {
-        // Create a new JFrame for displaying the options
-        JFrame testOptionsFrame = new JFrame("Test Features");
-        testOptionsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        testOptionsFrame.setSize(250, 200);
-        testOptionsFrame.setResizable(false);
-        testOptionsFrame.setLayout(new BorderLayout());
-
-        // Panel to hold the options with BoxLayout
-        JPanel testOptionsPanel = new JPanel();
-        testOptionsPanel.setLayout(new BoxLayout(testOptionsPanel, BoxLayout.Y_AXIS));
-        testOptionsPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-
-        // Label for the title
-        JLabel titleLabel = new JLabel("Test Features:");
-        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        testOptionsPanel.add(titleLabel);
-
-        // Buttons for the test feature options
-        vendingMachineButton = new JButton("Vending Machine Features");
-        maintenanceButton = new JButton("Maintenance Features");
-        exitTestButton = new JButton("Exit");
-
-        // Center align the buttons
-        vendingMachineButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        maintenanceButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        exitTestButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        // Add action listeners to the buttons
-        vendingMachineButton.addActionListener(e -> {
-            // Hide the parent frame (TestFeaturesOptions) and call the appropriate method
-            // based on the vending machine type (Regular or Special)
-            parentFrame.setVisible(false);
-
-            // Call the appropriate method based on the vending machine type
-            if (isRegularVendingMachine) {
-                RegularVendingFeatures features = new RegularVendingFeatures();
-                features.init();
-            } else {
-                SpecialVendingFeatures features = new SpecialVendingFeatures();
-                features.init();
-            }
-        });
-
-        maintenanceButton.addActionListener(e -> {
-            // Hide the parent frame (TestFeaturesOptions) and call the appropriate method
-            // based on the vending machine type (Regular or Special)
-            parentFrame.setVisible(false);
-
-            // Call the appropriate method based on the vending machine type
-            if (isRegularVendingMachine) {
-                RegularMaintenanceFeatures features = new RegularMaintenanceFeatures();
-                features.init();
-            } else {
-                SpecialMaintenanceFeatures features = new SpecialMaintenanceFeatures();
-                features.init();
-            }
-        });
-
-        exitTestButton.addActionListener(e -> {
-            // Close the options frame and show the parent frame (main menu) again
-            testOptionsFrame.dispose();
-            parentFrame.setVisible(true);
-        });
-
-        // Add buttons to the panel
-        testOptionsPanel.add(vendingMachineButton);
-        testOptionsPanel.add(maintenanceButton);
-        testOptionsPanel.add(exitTestButton);
-
-        // Add the options panel to the frame
-        testOptionsFrame.add(testOptionsPanel, BorderLayout.CENTER);
-
-        // set visible
-        testOptionsFrame.setLocationRelativeTo(parentFrame);
-        testOptionsFrame.setVisible(true);
-    }
 
     public void SetActionListener(ActionListener listener) {
+        regularButton.addActionListener(listener);
+        specialButton.addActionListener(listener);
     }
 
+    public void RegularSelectedDisplay(){
+        JOptionPane.showMessageDialog(optionsFrame, "Regular Vending Machine selected!");
+        optionsFrame.dispose(); // Close the options frame after selection
+        setVisible(true);
+    }
+
+    public void SpecialSelectedDisplay(){
+        JOptionPane.showMessageDialog(optionsFrame, "Special Vending Machine selected!");
+        optionsFrame.dispose(); // Close the options frame after selection
+        setVisible(true);
+    }
 }
