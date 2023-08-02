@@ -1,19 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
 
 
 public class VendingMachineGUI extends JFrame {
-    private VendingMachineOptions vendingOptions;
-    private JButton createButton;
-    private JButton testButton;
-    private JButton exitButton;
+    private boolean VMCreated = false;
+    private final JButton createButton;
+    private final JButton testButton;
+    private final JButton exitButton;
+
 
     public VendingMachineGUI() {
         // Set up the JFrame
@@ -47,33 +43,6 @@ public class VendingMachineGUI extends JFrame {
         testButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         exitButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Create a single instance of VendingMachineOptions
-        vendingOptions = new VendingMachineOptions();
-        // Add action listeners to the buttons
-        createButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vendingOptions.vendingTypes(VendingMachineGUI.this);
-                setVisible(false);
-            }
-        });
-
-        testButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Show the Test Features menu
-                vendingOptions.testFeaturesOptions(VendingMachineGUI.this);
-            }
-        });
-
-        exitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Exit the program
-                System.exit(0);
-            }
-        });
-
         // Add buttons to the panel
         buttonPanel.add(createButton);
         buttonPanel.add(testButton);
@@ -87,4 +56,15 @@ public class VendingMachineGUI extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
+
+    public void setActionListener(ActionListener listener){
+        createButton.addActionListener(listener);
+        testButton.addActionListener(listener);
+        exitButton.addActionListener(listener);
+    }
+
+    public void setVMCreated(boolean created){
+        this.VMCreated = created;
+    }
+    public boolean getVMCreated(){ return this.VMCreated; }
 }

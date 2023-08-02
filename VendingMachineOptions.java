@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class VendingMachineOptions extends JFrame {
 
@@ -14,15 +15,12 @@ public class VendingMachineOptions extends JFrame {
         // Initialize the JFrame with a title
         super("Vending Machine Options");
         setLayout(new BorderLayout());
-
         setSize(300, 200);
-
         setResizable(false);
-
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    public void vendingTypes() {
+    public void init() {
         // Create a new JFrame for displaying the options
         JFrame optionsFrame = new JFrame("Vending Machine Options");
         optionsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -154,4 +152,8 @@ public class VendingMachineOptions extends JFrame {
         testOptionsFrame.setLocationRelativeTo(parentFrame);
         testOptionsFrame.setVisible(true);
     }
+
+    public void SetActionListener(ActionListener listener) {
+    }
+
 }
