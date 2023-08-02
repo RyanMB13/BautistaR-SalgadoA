@@ -13,18 +13,18 @@ public class VMOptionsController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Regular Vending Machine")) {
-            setIsRegularVM(true);
             gui.RegularSelectedDisplay();
+            setIsRegularVendingMachine(true);
         } else if (e.getActionCommand().equals("Special Vending Machine")){
-            setIsRegularVM(false);
             gui.SpecialSelectedDisplay();
+            setIsRegularVendingMachine(false);
         }
     }
 
-    public void setIsRegularVM(boolean regular){
+    public void setIsRegularVendingMachine(boolean regular){
         this.isRegularVendingMachine = regular;
     }
 
-    public boolean getIsRegularVM(){ return this.isRegularVendingMachine; }
+    public boolean getIsRegularVendingMachine(){ return this.isRegularVendingMachine; }
 
 }

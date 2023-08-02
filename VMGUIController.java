@@ -3,7 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class VMGUIController implements ActionListener {
+
     private final VendingMachineGUI gui; // View
+    private VMOptionsController VMOController;
     private boolean VMCreated = false;
     private boolean isRegularVM;
     public VMGUIController(VendingMachineGUI gui){
@@ -16,11 +18,11 @@ public class VMGUIController implements ActionListener {
         if (e.getActionCommand().equals("Create Vending Machine")) {
             VendingMachineOptions VMOptions = new VendingMachineOptions();
             VMOptions.init();
-            VMOptionsController VMOptionsController = new VMOptionsController(VMOptions);
+            VMOController = new VMOptionsController(VMOptions);
             setVMCreated(true);
-            setIsRegularVM(VMOptionsController.getIsRegularVM());
         } else if (e.getActionCommand().equals("Test Features")) {
             if (getVMCreated()){
+                setIsRegularVM(VMOController.getIsRegularVendingMachine());
                 VendingMachineTestFeaturesOptions VMTFOptions = new VendingMachineTestFeaturesOptions();
                 VMTFOptions.init();
                 VMTFOptionsController VMTFOController = new VMTFOptionsController(VMTFOptions);

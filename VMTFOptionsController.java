@@ -20,12 +20,10 @@ public class VMTFOptionsController implements ActionListener {
                 RegularVendingFeatures RVendingFeatures = new RegularVendingFeatures();
                 RVendingFeatures.init();
                 // controller
-                System.out.println("R VENDING FEATURES");
             } else if (!getIsRegularVM()){
                 SpecialVendingFeatures SVendingFeatures = new SpecialVendingFeatures();
                 SVendingFeatures.init();
                 // controller
-                System.out.println("S VENDING FEATURES");
             }
         } else if (e.getActionCommand().equals("Maintenance Features")) {
             gui.hideParentFrame();
@@ -33,12 +31,10 @@ public class VMTFOptionsController implements ActionListener {
                 RegularMaintenanceFeatures RMaintenanceFeatures = new RegularMaintenanceFeatures();
                 RMaintenanceFeatures.init();
                 // controller
-                System.out.println("R MAINTENANCE FEATURES");
             } else if (!getIsRegularVM()){
                 SpecialMaintenanceFeatures SMaintenanceFeatures = new SpecialMaintenanceFeatures();
                 SMaintenanceFeatures.init();
                 // controller
-                System.out.println("S MAINTENANCE FEATURES");
             }
         } else if (e.getActionCommand().equals("Exit")){
             gui.exitButton();
