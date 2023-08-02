@@ -3,21 +3,19 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class VendingMachineTestFeaturesOptions extends JFrame {
-    private boolean isRegularVM;
     private JButton vendingMachineButton;
     private JButton maintenanceButton;
     private JButton exitTestButton;
 
     private JFrame testOptionsFrame;
 
-    public VendingMachineTestFeaturesOptions(boolean isRegularVM) {
+    public VendingMachineTestFeaturesOptions() {
         // Initialize the JFrame with a title
         super("Test Features");
         setLayout(new BorderLayout());
         setSize(300, 200);
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.isRegularVM = isRegularVM;
     }
 
     public void init(){
@@ -55,6 +53,9 @@ public class VendingMachineTestFeaturesOptions extends JFrame {
         // Add the options panel to the frame
         testOptionsFrame.add(testOptionsPanel, BorderLayout.CENTER);
 
+        // Center the frame on the screen
+        testOptionsFrame.setLocationRelativeTo(null);
+
         // set visible
         testOptionsFrame.setVisible(true);
     }
@@ -64,8 +65,6 @@ public class VendingMachineTestFeaturesOptions extends JFrame {
         maintenanceButton.addActionListener(listener);
         exitTestButton.addActionListener(listener);
     }
-
-    public boolean getIsRegularVM(){ return this.isRegularVM; }
 
     public void exitButton(){
         testOptionsFrame.dispose();

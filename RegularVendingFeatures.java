@@ -187,16 +187,6 @@ public class RegularVendingFeatures extends JFrame {
     }
 
     public void setActionListener (ActionListener listener){
-        btn1000 = new JButton("1000");
-        btn500 = new JButton("500");
-        btn200 = new JButton("200");
-        btn100 = new JButton("100");
-        btn50 = new JButton("50");
-        btn20 = new JButton("20");
-        btn10 = new JButton("10");
-        btn5 = new JButton("5");
-        btn1 = new JButton("1");
-
         // Action listeners
         btn1000.addActionListener(listener);
         btn500.addActionListener(listener);

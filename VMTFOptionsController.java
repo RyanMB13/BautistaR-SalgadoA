@@ -5,6 +5,8 @@ public class VMTFOptionsController implements ActionListener {
 
     private final VendingMachineTestFeaturesOptions gui;
 
+    private boolean isRegularVM;
+
     public VMTFOptionsController(VendingMachineTestFeaturesOptions gui) {
         this.gui = gui;
         gui.SetActionListener(this);
@@ -14,28 +16,39 @@ public class VMTFOptionsController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Vending Machine Features")) {
             gui.hideParentFrame();
-            if (gui.getIsRegularVM()) {
+            if (getIsRegularVM()) {
                 RegularVendingFeatures RVendingFeatures = new RegularVendingFeatures();
-                // controller
                 RVendingFeatures.init();
-            } else if (!gui.getIsRegularVM()){
-                SpecialVendingFeatures SVendingFeatures = new SpecialVendingFeatures();
                 // controller
+                System.out.println("R VENDING FEATURES");
+            } else if (!getIsRegularVM()){
+                SpecialVendingFeatures SVendingFeatures = new SpecialVendingFeatures();
                 SVendingFeatures.init();
+                // controller
+                System.out.println("S VENDING FEATURES");
             }
         } else if (e.getActionCommand().equals("Maintenance Features")) {
             gui.hideParentFrame();
-            if (gui.getIsRegularVM()) {
+            if (getIsRegularVM()) {
                 RegularMaintenanceFeatures RMaintenanceFeatures = new RegularMaintenanceFeatures();
-                // controller
                 RMaintenanceFeatures.init();
-            } else if (!gui.getIsRegularVM()){
-                SpecialMaintenanceFeatures SMaintenanceFeatures = new SpecialMaintenanceFeatures();
                 // controller
+                System.out.println("R MAINTENANCE FEATURES");
+            } else if (!getIsRegularVM()){
+                SpecialMaintenanceFeatures SMaintenanceFeatures = new SpecialMaintenanceFeatures();
                 SMaintenanceFeatures.init();
+                // controller
+                System.out.println("S MAINTENANCE FEATURES");
             }
         } else if (e.getActionCommand().equals("Exit")){
             gui.exitButton();
         }
     }
+
+    public void setIsRegularVM(boolean regular)
+    {
+        this.isRegularVM = regular;
+    }
+    public boolean getIsRegularVM(){ return this.isRegularVM; }
+
 }

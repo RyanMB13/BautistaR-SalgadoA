@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 public class VMGUIController implements ActionListener {
     private final VendingMachineGUI gui; // View
     private boolean VMCreated = false;
+    private boolean isRegularVM;
     public VMGUIController(VendingMachineGUI gui){
         this.gui = gui;
         gui.setActionListener(this);
@@ -13,15 +14,17 @@ public class VMGUIController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Create Vending Machine")) {
-            setVMCreated(true);
             VendingMachineOptions VMOptions = new VendingMachineOptions();
             VMOptions.init();
             VMOptionsController VMOptionsController = new VMOptionsController(VMOptions);
+            setVMCreated(true);
+            setIsRegularVM(VMOptionsController.getIsRegularVM());
         } else if (e.getActionCommand().equals("Test Features")) {
             if (getVMCreated()){
-                VendingMachineTestFeaturesOptions VMTFOptions = new VendingMachineTestFeaturesOptions(getVMCreated());
+                VendingMachineTestFeaturesOptions VMTFOptions = new VendingMachineTestFeaturesOptions();
                 VMTFOptions.init();
-                VMTFOptionsController VMTFOptionsController = new VMTFOptionsController(VMTFOptions);
+                VMTFOptionsController VMTFOController = new VMTFOptionsController(VMTFOptions);
+                VMTFOController.setIsRegularVM(getIsRegularVM());
             } else {
                 JOptionPane.showMessageDialog(gui, "Vending Machine has not yet been created.","Vending Machine", JOptionPane.ERROR_MESSAGE);
             }
@@ -33,4 +36,11 @@ public class VMGUIController implements ActionListener {
         this.VMCreated = created;
     }
     public boolean getVMCreated(){ return this.VMCreated; }
+
+    public void setIsRegularVM(boolean regular) {
+        this.isRegularVM = regular;
+    }
+
+    public boolean getIsRegularVM() { return this.isRegularVM; }
+
 }
