@@ -22,7 +22,7 @@ public class VendingMachineOptions extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    public void vendingTypes(JFrame parentFrame) {
+    public void vendingTypes() {
         // Create a new JFrame for displaying the options
         JFrame optionsFrame = new JFrame("Vending Machine Options");
         optionsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -53,7 +53,7 @@ public class VendingMachineOptions extends JFrame {
             // TODO: Add code for "Regular Vending Machine" functionality
             JOptionPane.showMessageDialog(optionsFrame, "Regular Vending Machine selected!");
             optionsFrame.dispose(); // Close the options frame after selection
-            parentFrame.setVisible(true); // Show the main menu frame again
+            setVisible(true); // Show the main menu frame again
             isRegularVendingMachine = true;
         });
 
@@ -61,7 +61,7 @@ public class VendingMachineOptions extends JFrame {
             // TODO: Add code for "Special Vending Machine" functionality
             JOptionPane.showMessageDialog(optionsFrame, "Special Vending Machine selected!");
             optionsFrame.dispose(); // Close the options frame after selection
-            parentFrame.setVisible(true); // Show the main menu frame again
+            setVisible(true); // Show the main menu frame again
             isRegularVendingMachine = false;
         });
 
@@ -74,7 +74,7 @@ public class VendingMachineOptions extends JFrame {
 
         // Pack and set visible
         optionsFrame.pack();
-        optionsFrame.setLocationRelativeTo(parentFrame);
+        optionsFrame.setLocationRelativeTo(null);
         optionsFrame.setVisible(true);
     }
     public void testFeaturesOptions(JFrame parentFrame) {
