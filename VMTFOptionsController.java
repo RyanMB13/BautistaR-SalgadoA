@@ -5,11 +5,17 @@ public class VMTFOptionsController implements ActionListener {
 
     private final VendingMachineTestFeaturesOptions gui;
 
+    private VendingMachine regularVendingMachine;
+
+    private SpecialVendingMachine specialVendingMachine;
+
     private boolean isRegularVM;
 
     public VMTFOptionsController(VendingMachineTestFeaturesOptions gui) {
         this.gui = gui;
         gui.SetActionListener(this);
+        this.regularVendingMachine = new VendingMachine();
+        this.specialVendingMachine = new SpecialVendingMachine();
     }
 
     @Override
@@ -19,22 +25,25 @@ public class VMTFOptionsController implements ActionListener {
             if (getIsRegularVM()) {
                 RegularVendingFeatures RVendingFeatures = new RegularVendingFeatures();
                 RVendingFeatures.init();
-                // controller
+                RVendingFeaturesController RVendingFeaturesController = new RVendingFeaturesController(RVendingFeatures, regularVendingMachine, specialVendingMachine);
             } else if (!getIsRegularVM()){
                 SpecialVendingFeatures SVendingFeatures = new SpecialVendingFeatures();
                 SVendingFeatures.init();
-                // controller
+                // controller COMMENT KO MUNA KASI WALA PANG CONTROLLER CLASS FILE
+                // SVendingFeaturesController sVendingFeaturesController = new SVendingFeaturesController(SVendingFeatures, specialVendingMachine);
             }
         } else if (e.getActionCommand().equals("Maintenance Features")) {
             gui.hideParentFrame();
             if (getIsRegularVM()) {
                 RegularMaintenanceFeatures RMaintenanceFeatures = new RegularMaintenanceFeatures();
                 RMaintenanceFeatures.init();
-                // controller
+                // controller COMMENT KO MUNA KASI WALA PANG CONTROLLER CLASS FILE
+                // RMaintenanceFeaturesController RMaintenanceFeaturesController = new RMaintenanceFeaturesController(RMaintenanceFeatures, regularVendingMachine);
             } else if (!getIsRegularVM()){
                 SpecialMaintenanceFeatures SMaintenanceFeatures = new SpecialMaintenanceFeatures();
                 SMaintenanceFeatures.init();
-                // controller
+                // controller COMMENT KO MUNA KASI WALA PANG CONTROLLER CLASS FILE
+                // SMaintenanceFeaturesController sMaintenanceFeaturesController = new SVendingFeaturesController(SMaintenanceFeatures, specialVendingMachine);
             }
         } else if (e.getActionCommand().equals("Exit")){
             gui.exitButton();

@@ -6,7 +6,6 @@ public class VendingMachineTestFeaturesOptions extends JFrame {
     private JButton vendingMachineButton;
     private JButton maintenanceButton;
     private JButton exitTestButton;
-
     private JFrame testOptionsFrame;
 
     public VendingMachineTestFeaturesOptions() {

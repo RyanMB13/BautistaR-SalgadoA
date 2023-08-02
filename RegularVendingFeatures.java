@@ -9,19 +9,8 @@ public class RegularVendingFeatures extends JFrame {
     private JButton purchaseItemButton;
     private JButton produceChangeButton;
     private JButton backButton;
-    private JButton btn1000;
-    private JButton btn500;
-    private JButton btn200;
-    private JButton btn100;
-    private JButton btn50;
-    private JButton btn20;
-    private JButton btn10;
-    private JButton btn5;
-    private JButton btn1;
-    private JButton btnDone;
 
-    private JLabel cashTrackerLabel;
-    private JLabel cashTracker;
+    private JFrame regFeaturesOptionsFrame;
 
     public RegularVendingFeatures() {
         // title
@@ -38,7 +27,7 @@ public class RegularVendingFeatures extends JFrame {
 
     public void init() {
         // Create a new JFrame for displaying the options
-        JFrame regFeaturesOptionsFrame = new JFrame("Regular Vending Machine Features");
+        regFeaturesOptionsFrame = new JFrame("Regular Vending Machine Features");
         regFeaturesOptionsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         regFeaturesOptionsFrame.setSize(300, 300);
         regFeaturesOptionsFrame.setResizable(false);
@@ -55,11 +44,11 @@ public class RegularVendingFeatures extends JFrame {
         regFeaturesOptionsPanel.add(titleLabel);
 
         // Buttons for the regular vending machine features
-        JButton enterMoneyButton = new JButton("Enter Money");
-        JButton displayItemsButton = new JButton("Display Items");
-        JButton purchaseItemButton = new JButton("Purchase Item");
-        JButton produceChangeButton = new JButton("Produce Change");
-        JButton backButton = new JButton("Back to Test Menu");
+        enterMoneyButton = new JButton("Enter Money");
+        displayItemsButton = new JButton("Display Items");
+        purchaseItemButton = new JButton("Purchase Item");
+        produceChangeButton = new JButton("Produce Change");
+        backButton = new JButton("Back to Test Menu");
 
         // Center align the buttons
         enterMoneyButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -67,13 +56,6 @@ public class RegularVendingFeatures extends JFrame {
         purchaseItemButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         produceChangeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        // Add action listeners to the buttons
-        enterMoneyButton.addActionListener(e -> {
-            // TODO: Add code for "Enter Money" functionality
-            RegularVendingFeatures enterMoney = new RegularVendingFeatures();
-            enterMoney.enterMoney(regFeaturesOptionsFrame);
-        });
 
         displayItemsButton.addActionListener(e -> {
             // TODO: Add code for "Display Items" functionality
@@ -83,16 +65,6 @@ public class RegularVendingFeatures extends JFrame {
         purchaseItemButton.addActionListener(e -> {
             // TODO: Add code for "Purchase Item" functionality
             JOptionPane.showMessageDialog(regFeaturesOptionsFrame, "Purchase Item selected!");
-        });
-
-        produceChangeButton.addActionListener(e -> {
-            // TODO: Add code for "Produce Change" functionality
-            JOptionPane.showMessageDialog(regFeaturesOptionsFrame, "Produce Change selected!");
-        });
-
-        backButton.addActionListener(e -> {
-            // Close the options frame and show the parent frame (TestFeaturesOptions) again
-            regFeaturesOptionsFrame.dispose();
         });
 
         // Add buttons to the panel
@@ -110,5 +82,24 @@ public class RegularVendingFeatures extends JFrame {
         regFeaturesOptionsFrame.setLocationRelativeTo(null); // Center on screen
         regFeaturesOptionsFrame.setVisible(true);
     }
-    
+        public void setActionListener(ActionListener listener) {
+            enterMoneyButton.addActionListener(listener);
+            displayItemsButton.addActionListener(listener);
+            purchaseItemButton.addActionListener(listener);
+            produceChangeButton.addActionListener(listener);
+            backButton.addActionListener(listener);
+        }
+
+        public void Exit(){
+            regFeaturesOptionsFrame.dispose();
+        }
+
+        public void displayProduceChange(){
+            JOptionPane.showMessageDialog(regFeaturesOptionsFrame, "Your change has been dispensed: P+ current cash" );
+            System.out.print("hello");
+            regFeaturesOptionsFrame.dispose(); // Close the options frame after selection
+            setVisible(false);
+        }
 }
+
+
