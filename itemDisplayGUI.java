@@ -11,7 +11,14 @@ public class itemDisplayGUI extends JFrame{
     private JButton goBackButton;
     private java.util.List<Item> uniqueItemList;
     public itemDisplayGUI(java.util.List<Item> uniqueItemList){
+        super("Display Itms");
+        setLayout(new BorderLayout());
+        setSize(300, 200);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         this.uniqueItemList = uniqueItemList;
+
         init();
     }
 
