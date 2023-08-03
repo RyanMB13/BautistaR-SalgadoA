@@ -40,8 +40,7 @@ public class VMTFOptionsController implements ActionListener {
             if (getIsRegularVM()) {
                 RegularMaintenanceFeatures RMaintenanceFeatures = new RegularMaintenanceFeatures();
                 RMaintenanceFeatures.init();
-                // controller COMMENT KO MUNA KASI WALA PANG CONTROLLER CLASS FILE
-                // RMaintenanceFeaturesController RMaintenanceFeaturesController = new RMaintenanceFeaturesController(RMaintenanceFeatures, regularVendingMachine);
+                RMaintenanceFeaturesController RMaintenanceFeaturesController = new RMaintenanceFeaturesController(RMaintenanceFeatures, regularVendingMachine);
             } else if (!getIsRegularVM()){
                 SpecialMaintenanceFeatures SMaintenanceFeatures = new SpecialMaintenanceFeatures();
                 SMaintenanceFeatures.init();

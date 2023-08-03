@@ -1,28 +1,30 @@
 import javax.swing.*;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class AddItemGUI extends JFrame {
     private JTextField nameField;
     private JTextField priceField;
     private JTextField caloriesField;
     private JTextField stockField;
-
     private JButton addItemButton;
+    private JPanel panel;
+    protected ArrayList<String> errorList;
 
 
     public AddItemGUI() {
         super("Add Item");
-        init();
     }
 
-    private void init() {
+    public void init() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 200);
+        setSize(400, 300);
         setLocationRelativeTo(null);
         setResizable(false);
 
-        JPanel panel = new JPanel(new GridBagLayout());
+        panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.CENTER;
         gbc.insets = new Insets(5, 5, 5, 5);
@@ -37,25 +39,25 @@ public class AddItemGUI extends JFrame {
         gbc.gridy = 0;
         panel.add(nameField, gbc);
 
-        JLabel priceLabel = new JLabel("Price:");
+        JLabel caloriesLabel = new JLabel("Calores:");
         gbc.gridx = 0;
         gbc.gridy = 1;
-        panel.add(priceLabel, gbc);
-
-        priceField = new JTextField(20);
-        gbc.gridx = 1;
-        gbc.gridy = 1;
-        panel.add(priceField, gbc);
-
-        JLabel caloriesLabel = new JLabel("Calories:");
-        gbc.gridx = 0;
-        gbc.gridy = 2;
         panel.add(caloriesLabel, gbc);
 
         caloriesField = new JTextField(20);
         gbc.gridx = 1;
-        gbc.gridy = 2;
+        gbc.gridy = 1;
         panel.add(caloriesField, gbc);
+
+        JLabel priceLabel = new JLabel("Price:");
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(priceLabel, gbc);
+
+        priceField = new JTextField(20);
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        panel.add(priceField, gbc);
 
         JLabel stockLabel = new JLabel("Stock:");
         gbc.gridx = 0;
@@ -81,13 +83,47 @@ public class AddItemGUI extends JFrame {
     public void setActionListener(ActionListener listener){
         addItemButton.addActionListener(listener);
     }
-    public void displayAdd(String name, double price, int calories, int stock) {
+
+    public void setDocumentListener(DocumentListener listener){
+        nameField.getDocument().addDocumentListener(listener);
+        caloriesField.getDocument().addDocumentListener(listener);
+        priceField.getDocument().addDocumentListener(listener);
+        stockField.getDocument().addDocumentListener(listener);
+    }
+
+    public String getItemName(){
+        return nameField.getText();
+    }
+    public String getItemCalories(){
+        return caloriesField.getText();
+    }
+    public String getItemPrice(){
+        return priceField.getText();
+    }
+    public String getItemStock(){
+        return stockField.getText();
+    }
+
+    public void displayAdd(String name, int calories, double price, int stock) {
         String message = "You have added:\n" +
                 "\"" + name + "\"\n" +
-                "Price: " + price + "\n" +
                 "Calories: " + calories + "\n" +
+                "Price: " + price + "\n" +
                 "Stock: " + stock;
 
         JOptionPane.showMessageDialog(null, message, "Item Added", JOptionPane.INFORMATION_MESSAGE);
+    }
+    public void displayInvalidInput(){
+        StringBuilder message = new StringBuilder("Unable to Add Item" + "\n"); //StringBuilder to build the message for the JOptionPane
+
+        for (String s : errorList){
+            message.append(s);
+        }
+
+        JOptionPane.showMessageDialog(panel, message, "Invalid Add Item Input", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void Exit(){
+        dispose();
     }
 }

@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class RegularMaintenanceFeatures extends JFrame {
 
@@ -10,6 +12,8 @@ public class RegularMaintenanceFeatures extends JFrame {
     private JButton replenishChangeButton;
     private JButton printSummaryButton;
     private JButton backButton;
+    private JFrame regMaintenanceOptionsFrame;
+    protected ArrayList<String> outputList = new ArrayList<>();
 
     public RegularMaintenanceFeatures() {
         // title
@@ -25,7 +29,7 @@ public class RegularMaintenanceFeatures extends JFrame {
     }
     public void init() {
         // Create a new JFrame for displaying the options
-        JFrame regMaintenanceOptionsFrame = new JFrame("Maintenance Features");
+        regMaintenanceOptionsFrame = new JFrame("Maintenance Features");
         regMaintenanceOptionsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         regMaintenanceOptionsFrame.setSize(300, 300);
         regMaintenanceOptionsFrame.setResizable(false);
@@ -59,40 +63,6 @@ public class RegularMaintenanceFeatures extends JFrame {
         printSummaryButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Add action listeners to the buttons
-        addItemButton.addActionListener(e -> {
-            // TODO: Add code for "add Item" functionality
-            JOptionPane.showMessageDialog(regMaintenanceOptionsFrame, "Enter Money selected!");
-        });
-        collectPaymentButton.addActionListener(e -> {
-            // TODO: Add code for "add Item" functionality
-            JOptionPane.showMessageDialog(regMaintenanceOptionsFrame, "Enter Money selected!");
-        });
-        changePriceButton.addActionListener(e -> {
-            // TODO: Add code for "Change Price" functionality
-            JOptionPane.showMessageDialog(regMaintenanceOptionsFrame, "Display Items selected!");
-        });
-
-        replenishStockButton.addActionListener(e -> {
-            // TODO: Add code for "Replenish Stock" functionality
-            JOptionPane.showMessageDialog(regMaintenanceOptionsFrame, "Purchase Item selected!");
-        });
-
-        replenishChangeButton.addActionListener(e -> {
-            // TODO: Add code for "Replenish change" functionality
-            JOptionPane.showMessageDialog(regMaintenanceOptionsFrame, "Produce Change selected!");
-        });
-
-        printSummaryButton.addActionListener(e -> {
-            // TODO: Add code for "Print summary" functionality
-            JOptionPane.showMessageDialog(regMaintenanceOptionsFrame, "Produce Change selected!");
-        });
-
-        backButton.addActionListener(e -> {
-            // Close the options frame and show the parent frame (TestFeaturesOptions) again
-            regMaintenanceOptionsFrame.dispose();
-        });
-
         // Add buttons to the panel
         regMaintenanceOptionsPanel.add(addItemButton);
         regMaintenanceOptionsPanel.add(collectPaymentButton);
@@ -108,5 +78,33 @@ public class RegularMaintenanceFeatures extends JFrame {
         // Pack and set visible
         regMaintenanceOptionsFrame.setLocationRelativeTo(null);
         regMaintenanceOptionsFrame.setVisible(true);
+    }
+
+    public void setActionListener(ActionListener listener) {
+        addItemButton.addActionListener(listener);
+        collectPaymentButton.addActionListener(listener);
+        changePriceButton.addActionListener(listener);
+        replenishStockButton.addActionListener(listener);
+        replenishChangeButton.addActionListener(listener);
+        printSummaryButton.addActionListener(listener);
+        backButton.addActionListener(listener);
+    }
+
+    public void Exit(){
+        regMaintenanceOptionsFrame.dispose();
+    }
+
+    public void displayCollectPayment(double payment) {
+        StringBuilder message = new StringBuilder("Payment to be dispensed: ₱" + payment + "\n"); //StringBuilder to build the message for the JOptionPane
+
+        for (String s : outputList){
+            message.append(s);
+        }
+
+        JOptionPane.showMessageDialog(regMaintenanceOptionsFrame, message, "Collect Payment", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void displayPrintPurchaseSummary() {
+
     }
 }
