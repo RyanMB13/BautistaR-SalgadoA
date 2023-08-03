@@ -17,7 +17,7 @@ public class PurchaseGUI extends JFrame {
     public PurchaseGUI(java.util.List<Item> uniqueItemList) {
         super("Purchase Items");
         setLayout(new BorderLayout());
-        setSize(300, 200);
+        setSize(400, 300);
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -27,7 +27,7 @@ public class PurchaseGUI extends JFrame {
     public void init() {
         purchaseFrame = new JFrame("Purchase Item");
         purchaseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        purchaseFrame.setSize(500, 400);
+        purchaseFrame.setSize(400, 300);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
@@ -103,6 +103,7 @@ public class PurchaseGUI extends JFrame {
         mainPanel.add(bottomPanel, BorderLayout.SOUTH);
 
         getContentPane().add(mainPanel);
+        setLocationRelativeTo(null); // Center the JFrame on the screen
         setVisible(true);
     }
 
@@ -134,7 +135,7 @@ public class PurchaseGUI extends JFrame {
     }
 
    public void Exit() {
-       purchaseFrame.dispose();
+       dispose();
    }
 
     public void setActionListener(ActionListener listener){
