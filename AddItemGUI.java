@@ -25,9 +25,9 @@ public class AddItemGUI extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
 
-        panel = new JPanel(new GridBagLayout());
+        JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new Insets(5, 5, 5, 5);
 
         JLabel nameLabel = new JLabel("Name:");
@@ -40,25 +40,25 @@ public class AddItemGUI extends JFrame {
         gbc.gridy = 0;
         panel.add(nameField, gbc);
 
-        JLabel caloriesLabel = new JLabel("Calories:");
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        panel.add(caloriesLabel, gbc);
-
-        caloriesField = new JTextField(20);
-        gbc.gridx = 1;
-        gbc.gridy = 1;
-        panel.add(caloriesField, gbc);
-
         JLabel priceLabel = new JLabel("Price:");
         gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridy = 1;
         panel.add(priceLabel, gbc);
 
         priceField = new JTextField(20);
         gbc.gridx = 1;
-        gbc.gridy = 2;
+        gbc.gridy = 1;
         panel.add(priceField, gbc);
+
+        JLabel caloriesLabel = new JLabel("Calories:");
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panel.add(caloriesLabel, gbc);
+
+        caloriesField = new JTextField(20);
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        panel.add(caloriesField, gbc);
 
         JLabel stockLabel = new JLabel("Stock:");
         gbc.gridx = 0;
@@ -73,11 +73,11 @@ public class AddItemGUI extends JFrame {
         addItemButton = new JButton("Add Item");
         gbc.gridx = 0;
         gbc.gridy = 4;
-        gbc.gridwidth = 2;
-        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.EAST;
         panel.add(addItemButton, gbc);
 
-        backButton = new JButton("Back to Maintenance Features");
+        backButton = new JButton("Back to Maintenance Featrues");
         gbc.gridx = 1;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
