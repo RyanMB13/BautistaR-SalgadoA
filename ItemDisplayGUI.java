@@ -4,12 +4,14 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class ItemDisplayGUI extends JFrame{
+public class itemDisplayGUI extends JFrame{
 
     private JFrame displayFrame;
+
     private JButton goBackButton;
+    private JTable table;
     private java.util.List<Item> uniqueItemList;
-    public ItemDisplayGUI(java.util.List<Item> uniqueItemList){
+    public itemDisplayGUI(java.util.List<Item> uniqueItemList){
         super("Display Itms");
         setLayout(new BorderLayout());
         setSize(300, 200);
@@ -49,7 +51,7 @@ public class ItemDisplayGUI extends JFrame{
             itemNumber++;
         }
 
-        JTable table = new JTable(new DefaultTableModel(tableData, columnHeaders));
+        table = new JTable(new DefaultTableModel(tableData, columnHeaders));
 
         // Center align the text in all columns of the table
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -61,7 +63,7 @@ public class ItemDisplayGUI extends JFrame{
         JScrollPane scrollPane = new JScrollPane(table);
         mainPanel.add(scrollPane, BorderLayout.CENTER);
 
-        JButton goBackButton = new JButton("Go Back to Vending Features");
+        goBackButton = new JButton("Go Back to Vending Features");
         //goBackButton.addActionListener(e -> goBack());
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -78,6 +80,7 @@ public class ItemDisplayGUI extends JFrame{
         // For example, you can close this window and open the main vending window
         dispose();
     }
+
     public void setActionListener(ActionListener listener){
         goBackButton.addActionListener(listener);
     }

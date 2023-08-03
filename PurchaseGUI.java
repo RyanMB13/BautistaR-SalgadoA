@@ -2,24 +2,38 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PurchaseGUI extends JFrame {
 
-    private final List<Item> uniqueItemList;
+    private JFrame purchaseFrame;
 
-    public PurchaseGUI(List<Item> uniqueItemList) {
+    private JButton goBackButton;
+    private JButton purchaseButton;
+
+    private JTable table;
+    private JComboBox<String> itemNamesComboBox;
+    private java.util.List<Item> uniqueItemList;
+
+    public PurchaseGUI(java.util.List<Item> uniqueItemList) {
+        super("Purchase Items");
+        setLayout(new BorderLayout());
+        setSize(300, 200);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
         this.uniqueItemList = uniqueItemList;
 
-        initializeGUI();
+        init();
     }
 
-    private void initializeGUI() {
-        setTitle("Item Display");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 400);
-        setLocationRelativeTo(null);
+    private void init() {
+        purchaseFrame = new JFrame("Purchase Item");
+        purchaseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        purchaseFrame.setSize(500, 400);
+        purchaseFrame.setLocationRelativeTo(null);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
@@ -49,7 +63,7 @@ public class PurchaseGUI extends JFrame {
         }
 
         // Create the table with a default table model
-        JTable table = new JTable(new DefaultTableModel(tableData, columnHeaders));
+        table = new JTable(new DefaultTableModel(tableData, columnHeaders));
 
         // Limit table visibility to 6 rows and add a scrollbar
         int visibleRows = 6;
@@ -66,7 +80,7 @@ public class PurchaseGUI extends JFrame {
         mainPanel.add(centerPanel, BorderLayout.CENTER);
 
         // Create a JComboBox with item names
-        JComboBox<String> itemNamesComboBox = new JComboBox<>();
+        itemNamesComboBox = new JComboBox<>();
         // 2. Adding the first item on the drop-down as "Select an item you want to purchase"
         itemNamesComboBox.addItem("Select an item you want to purchase");
         for (Item item : uniqueItemList) {
@@ -85,7 +99,7 @@ public class PurchaseGUI extends JFrame {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
-        JButton purchaseButton = new JButton("Purchase");
+        purchaseButton = new JButton("Purchase");
         purchaseButton.addActionListener(e -> {
             String selectedItem = (String) itemNamesComboBox.getSelectedItem();
             if (selectedItem != null && !selectedItem.equals("Select an item you want to purchase")) {
@@ -93,7 +107,7 @@ public class PurchaseGUI extends JFrame {
             }
         });
 
-        JButton goBackButton = new JButton("Go Back");
+        goBackButton = new JButton("Go Back");
         goBackButton.addActionListener(e -> goBack());
 
         JPanel bottomPanel = new JPanel();
@@ -108,37 +122,6 @@ public class PurchaseGUI extends JFrame {
     }
 
 
-    // You can implement the countStock method according to your requirements
-    private int countStock(String itemName) {
-        // Implement the logic to count stock for a specific item here
-        return 0;
-    }
-
-    // Assuming you have the Item class with the required getters
-    private static class Item {
-        private final String name;
-        private final int calories;
-        private final double price;
-
-        public Item(String name, int calories, double price) {
-            this.name = name;
-            this.calories = calories;
-            this.price = price;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public int getCalories() {
-            return calories;
-        }
-
-        public double getPrice() {
-            return price;
-        }
-    }
-
     private void goBack() {
         // Implement the logic to go back to vending features here
         // For example, you can close this window and open the main vending window
@@ -150,33 +133,9 @@ public class PurchaseGUI extends JFrame {
                 "Purchase Confirmation", JOptionPane.INFORMATION_MESSAGE);
     }
 
-
-    public static void main(String[] args) {
-        // Replace this with your actual list of items
-        List<Item> uniqueItemList = new ArrayList<>();
-        uniqueItemList.add(new Item("Item1", 100, 2.99));
-        uniqueItemList.add(new Item("Item2", 150, 4.99));
-        uniqueItemList.add(new Item("Item3", 200, 3.49));
-        uniqueItemList.add(new Item("Item4", 100, 2.99));
-        uniqueItemList.add(new Item("Item5", 150, 4.99));
-        uniqueItemList.add(new Item("Item6", 200, 3.49));
-        uniqueItemList.add(new Item("Item7", 100, 2.99));
-        uniqueItemList.add(new Item("Item8", 150, 4.99));
-        uniqueItemList.add(new Item("Item9", 200, 3.49));
-        uniqueItemList.add(new Item("Item10", 100, 2.99));
-        uniqueItemList.add(new Item("Item11", 150, 4.99));
-        uniqueItemList.add(new Item("Item12", 200, 3.49));
-        uniqueItemList.add(new Item("Item13", 100, 2.99));
-        uniqueItemList.add(new Item("Item14", 150, 4.99));
-        uniqueItemList.add(new Item("Item15", 200, 3.49));
-        uniqueItemList.add(new Item("Item16", 100, 2.99));
-        uniqueItemList.add(new Item("Item17", 150, 4.99));
-        uniqueItemList.add(new Item("Item18", 200, 3.49));
-        uniqueItemList.add(new Item("Item19", 100, 2.99));
-        uniqueItemList.add(new Item("Item20", 150, 4.99));
-        uniqueItemList.add(new Item("Item21", 200, 3.49));
-
-
-        SwingUtilities.invokeLater(() -> new PurchaseGUI(uniqueItemList));
+    public void setActionListener(ActionListener listener){
+        goBackButton.addActionListener(listener);
     }
+
 }
+
