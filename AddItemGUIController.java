@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 
 public class AddItemGUIController implements ActionListener, DocumentListener {
 
-    private AddItemGUI gui;
+    private final AddItemGUI gui;
 
-    private VendingMachine vendingMachine;
+    private final VendingMachine vendingMachine;
 
     public AddItemGUIController(AddItemGUI addItemGUI, VendingMachine vendingMachine) {
         this.gui = addItemGUI;
@@ -47,9 +47,9 @@ public class AddItemGUIController implements ActionListener, DocumentListener {
             }
 
             String sPrice = gui.getItemPrice();
-            int price = 0;
+            double price = 0;
             try {
-                price = Integer.parseInt(sPrice);
+                price = Double.parseDouble(sPrice);
                 if (price < 0) {
                     gui.errorList.add("Inputted Price cannot be less than 0" + "\n");
                     validPrice = false;
