@@ -134,6 +134,7 @@ public class PurchaseGUI extends JFrame {
     }
 
     public void setActionListener(ActionListener listener){
+        purchaseButton.addActionListener(listener);
         goBackButton.addActionListener(listener);
     }
 
