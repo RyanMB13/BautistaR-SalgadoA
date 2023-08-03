@@ -23,7 +23,9 @@ public class RVendingFeaturesController implements ActionListener {
             displayItemGUI.init();
             ItemDisplayGUIController displayItemGUIController = new ItemDisplayGUIController(displayItemGUI);
         } else if (e.getActionCommand().equals("Purchase Item")) {
-            System.out.print("You selected Purchase Item");
+            PurchaseGUI purchaseGUI = new PurchaseGUI(vendingMachine.itemList);
+            purchaseGUI.init();
+            PurchaseGUIController purchaseGUIController = new PurchaseGUIController(purchaseGUI, vendingMachine);
         } else if (e.getActionCommand().equals("Produce Change")) {
             produceChange();
             gui.displayProduceChange(vendingMachine.getUserCash());

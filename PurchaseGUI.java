@@ -25,15 +25,12 @@ public class PurchaseGUI extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         this.uniqueItemList = uniqueItemList;
-
-        init();
     }
 
-    private void init() {
+    public void init() {
         purchaseFrame = new JFrame("Purchase Item");
         purchaseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         purchaseFrame.setSize(500, 400);
-        purchaseFrame.setLocationRelativeTo(null);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
@@ -108,7 +105,6 @@ public class PurchaseGUI extends JFrame {
         });
 
         goBackButton = new JButton("Go Back");
-        goBackButton.addActionListener(e -> goBack());
 
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -121,11 +117,8 @@ public class PurchaseGUI extends JFrame {
         setVisible(true);
     }
 
-
-    private void goBack() {
-        // Implement the logic to go back to vending features here
-        // For example, you can close this window and open the main vending window
-        dispose();
+    private void Exit() {
+        purchaseFrame.dispose();
     }
 
     private void showPurchaseConfirmation(String itemName) {

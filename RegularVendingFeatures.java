@@ -93,8 +93,6 @@ public class RegularVendingFeatures extends JFrame {
             }
 
             JOptionPane.showMessageDialog(regFeaturesOptionsFrame, message, "Produce Change", JOptionPane.INFORMATION_MESSAGE);
-
-
         }
 }
 

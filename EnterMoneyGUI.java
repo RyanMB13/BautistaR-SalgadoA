@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class EnterMoneyGUI extends JFrame {
     private JLabel cashTrackerLabel;
@@ -97,6 +98,22 @@ public class EnterMoneyGUI extends JFrame {
         cashTrackerLabel.setText("Cash to be added: ₱" + getDisplayCash());
     }
 
+    public void displayEnteredCashMessage(double prevCash, double currCash) {
+        ArrayList<String> outputList = new ArrayList<>();
+
+        StringBuilder message = new StringBuilder("Previous Cash Amount: ₱" + prevCash + "\n");
+
+        outputList.add("You have entered: ₱" + getDisplayCash() + "\n");
+        outputList.add("Current Cash Amount: ₱" + currCash + "\n");
+
+        for (String s : outputList){
+            message.append(s);
+        }
+
+        JOptionPane.showMessageDialog(this, message, "Enter Money", JOptionPane.INFORMATION_MESSAGE);
+
+        outputList.clear();
+    }
     public void Exit(){
         this.dispose();
     }
@@ -107,14 +124,5 @@ public class EnterMoneyGUI extends JFrame {
 
     public double getDisplayCash(){
         return this.displayCash;
-    }
-
-    public void displayEnteredCashMessage() {
-        double enteredCash = getDisplayCash();
-
-        JOptionPane.showMessageDialog(this,
-                "You have entered: ₱" + enteredCash,
-                "Entered Cash",
-                JOptionPane.INFORMATION_MESSAGE);
     }
 }

@@ -60,12 +60,14 @@ public class EnterMoneyGUIController implements ActionListener {
             gui.setDisplayCash(1);
             gui.DisplayCashInput();
         } else if (e.getActionCommand().equals("Finish Adding Money")) {
+            double prevCash = regularVendingMachine.getUserCash();
             double totalCash = 0;
             for (Money m : regularVendingMachine.userCashList){
                 totalCash += m.getValue() * m.getQuantity();
             }
-            regularVendingMachine.setUserCash(regularVendingMachine.getUserCash() + totalCash);
-            System.out.println(regularVendingMachine.getUserCash());
+            regularVendingMachine.setUserCash(totalCash);
+            gui.displayEnteredCashMessage(prevCash, regularVendingMachine.getUserCash());
+            gui.setDisplayCash(0);
             gui.Exit();
         }
     }
