@@ -6,13 +6,13 @@ import java.awt.event.ActionListener;
 
 public class PurchaseSummaryGUI extends JFrame {
 
-    private final List<Item> uniqueItemList;
-    private int totalQuantitySold;
-    private int totalSales;
+    private final java.util.List<Item> uniqueItemList;
+    private final int totalQuantitySold;
+    private final int totalSales;
     private JButton goBackButton;
 
 
-    public PurchaseSummaryGUI(List<Item> uniqueItemList, int totalQuantitySold, int totalSales) {
+    public PurchaseSummaryGUI(java.util.List<Item> uniqueItemList, int totalQuantitySold, int totalSales) {
         super("Purchase Summary");
         setLayout(new BorderLayout());
         setSize(400, 300);
@@ -44,7 +44,7 @@ public class PurchaseSummaryGUI extends JFrame {
         for (int i = 0; i < uniqueItemList.size(); i++) {
             Item item = uniqueItemList.get(i);
             tableData[i][0] = item.getName();
-            tableData[i][1] = item.getInitialStock();
+            //tableData[i][1] = item.getInitialStock();
             tableData[i][2] = item.getEndStock();
         }
 

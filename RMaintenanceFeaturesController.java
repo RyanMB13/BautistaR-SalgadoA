@@ -6,7 +6,7 @@ public class RMaintenanceFeaturesController implements ActionListener {
 
     private RegularMaintenanceFeatures gui;
 
-    private VendingMachine vendingMachine;
+    private final VendingMachine vendingMachine;
 
 
     public RMaintenanceFeaturesController(RegularMaintenanceFeatures rMaintenanceFeatures, VendingMachine vendingMachine) {
@@ -35,7 +35,7 @@ public class RMaintenanceFeaturesController implements ActionListener {
         } else if (e.getActionCommand().equals("Replenish Change")) {
 
         } else if (e.getActionCommand().equals("Print Purchase Summary")) {
-            gui.displayPrintPurchaseSummary();
+            //PurchaseSummaryGUI purchaseSummaryGUI = new PurchaseSummaryGUI(vendingMachine.itemList, )
         } else if (e.getActionCommand().equals("Back to Test Menu")) {
             gui.Exit();
         }

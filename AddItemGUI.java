@@ -10,6 +10,7 @@ public class AddItemGUI extends JFrame {
     private JTextField caloriesField;
     private JTextField stockField;
     private JButton addItemButton;
+    private JButton backButton;
     private JPanel panel;
     protected ArrayList<String> errorList;
 
@@ -20,7 +21,7 @@ public class AddItemGUI extends JFrame {
 
     public void init() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 300);
+        setSize(400, 200);
         setLocationRelativeTo(null);
         setResizable(false);
 
@@ -39,7 +40,7 @@ public class AddItemGUI extends JFrame {
         gbc.gridy = 0;
         panel.add(nameField, gbc);
 
-        JLabel caloriesLabel = new JLabel("Calores:");
+        JLabel caloriesLabel = new JLabel("Calories:");
         gbc.gridx = 0;
         gbc.gridy = 1;
         panel.add(caloriesLabel, gbc);
@@ -76,12 +77,20 @@ public class AddItemGUI extends JFrame {
         gbc.anchor = GridBagConstraints.CENTER;
         panel.add(addItemButton, gbc);
 
+        backButton = new JButton("Back to Maintenance Features");
+        gbc.gridx = 1;
+        gbc.gridy = 4;
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.WEST;
+        panel.add(backButton, gbc);
+
         add(panel);
         setVisible(true);
     }
 
     public void setActionListener(ActionListener listener){
         addItemButton.addActionListener(listener);
+        backButton.addActionListener(listener);
     }
 
     public void setDocumentListener(DocumentListener listener){

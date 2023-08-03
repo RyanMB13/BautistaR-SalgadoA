@@ -76,7 +76,7 @@ public class AddItemGUIController implements ActionListener, DocumentListener {
             } else {
                 gui.displayInvalidInput();
             }
-        } else if (e.getActionCommand().equals("Back to Maintenance Menu")) {
+        } else if (e.getActionCommand().equals("Back to Maintenance Features")) {
             gui.Exit();
         }
     }
