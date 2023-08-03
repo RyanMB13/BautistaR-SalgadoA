@@ -19,7 +19,7 @@ public class VendingMachine {
     public VendingMachine() {
         this.itemList = new ArrayList<>();
         this.userCashList = new ArrayList<>();
-        this.userCash = 1998.00;
+        this.userCash = 0.00;
         this.paymentList = new ArrayList<>();
         this.totalPayment = 0.00;
         this.VMChangeList = new ArrayList<>();

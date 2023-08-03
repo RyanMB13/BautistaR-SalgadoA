@@ -14,9 +14,8 @@ public class EnterMoneyGUI extends JFrame {
     private JButton btn10;
     private JButton btn5;
     private JButton btn1;
-
     private JButton btnDone;
-
+    private  double displayCash;
     public EnterMoneyGUI() {
         // title
         super("Enter Money");
@@ -94,12 +93,19 @@ public class EnterMoneyGUI extends JFrame {
         btnDone.addActionListener(listener);
     }
 
-    public void setUserCash(double userCash) {
-        // Sets the text at the bottom of Enter Money to whatever the userCash is.
-        cashTrackerLabel.setText("Current Cash: ₱" + userCash);
+    public void DisplayCashInput() {
+        cashTrackerLabel.setText("Cash to be added: ₱" + getDisplayCash());
     }
 
     public void Exit(){
         this.dispose();
+    }
+
+    public void setDisplayCash(double cash){
+        this.displayCash += cash;
+    }
+
+    public double getDisplayCash(){
+        return this.displayCash;
     }
 }
