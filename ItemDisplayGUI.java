@@ -9,21 +9,16 @@ public class ItemDisplayGUI extends JFrame{
     private JFrame displayFrame;
 
     private JButton goBackButton;
-    private JTable table;
-    private java.util.List<Item> uniqueItemList;
-    private final VendingMachine regularVendingMachine;
+    private final java.util.List<Item> uniqueItemList;
 
-    private final SpecialVendingMachine specialVendingMachine;
-    public ItemDisplayGUI(java.util.List<Item> uniqueItemList, VendingMachine regularVendingMachine, SpecialVendingMachine specialVendingMachine){
-        super("Display Itms");
+    public ItemDisplayGUI(java.util.List<Item> uniqueItemList){
+        super("Display Items");
         setLayout(new BorderLayout());
         setSize(300, 200);
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         this.uniqueItemList = uniqueItemList;
-        this.regularVendingMachine = regularVendingMachine;
-        this.specialVendingMachine = specialVendingMachine;
     }
 
     public void init() {
@@ -35,7 +30,7 @@ public class ItemDisplayGUI extends JFrame{
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
 
-        JLabel titleLabel = new JLabel("Displaying Items");
+        JLabel titleLabel = new JLabel("Current Items In The Vending Machine Are:");
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         mainPanel.add(titleLabel, BorderLayout.NORTH);
 
@@ -54,7 +49,7 @@ public class ItemDisplayGUI extends JFrame{
             itemNumber++;
         }
 
-        table = new JTable(new DefaultTableModel(tableData, columnHeaders));
+        JTable table = new JTable(new DefaultTableModel(tableData, columnHeaders));
 
         // Center align the text in all columns of the table
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -78,13 +73,11 @@ public class ItemDisplayGUI extends JFrame{
         displayFrame.setVisible(true);
     }
 
-    public void goBack() {
-        // Implement the logic to go back to vending features here
-        // For example, you can close this window and open the main vending window
+    public void Exit() {
         displayFrame.dispose();
     }
 
-    public void setActionListener(ActionListener listener){
+    public void setActionListener(ActionListener listener) {
         goBackButton.addActionListener(listener);
     }
 

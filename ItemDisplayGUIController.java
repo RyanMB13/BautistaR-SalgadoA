@@ -10,11 +10,10 @@ public class ItemDisplayGUIController implements ActionListener {
         gui.setActionListener(this);
     }
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Back to Vending Features")) {
-            gui.goBack();
+            gui.Exit();
         }
     }
 }

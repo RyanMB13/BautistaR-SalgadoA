@@ -15,12 +15,13 @@ public class EnterMoneyGUI extends JFrame {
     private JButton btn5;
     private JButton btn1;
 
+    private JButton btnDone;
+
     public EnterMoneyGUI() {
         // title
         super("Enter Money");
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        init();
     }
 
     public void init() {
@@ -37,36 +38,28 @@ public class EnterMoneyGUI extends JFrame {
 
         // North Panel for the label
         JPanel labelPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        JLabel titleLabel = new JLabel("How much money do you want to enter?");
+        JLabel titleLabel = new JLabel("Please click on the denomination you want to input");
         labelPanel.add(titleLabel);
 
         // Inner Panel for the Finish button and current cash tracker
         JPanel finishPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        setUserCash(10000);
+        cashTrackerLabel = new JLabel();
+        cashTrackerLabel.setText("Current Cash: ₱0");
         finishPanel.add(cashTrackerLabel);
-        JButton btnDone = new JButton("Finish Adding Money");
+        btnDone = new JButton("Finish Adding Money");
         finishPanel.add(btnDone);
 
         // Buttons each denomination
-        btn1000 = new JButton("1000");
-        btn500 = new JButton("500");
-        btn200 = new JButton("200");
-        btn100 = new JButton("100");
-        btn50 = new JButton("50");
-        btn20 = new JButton("20");
-        btn10 = new JButton("10");
-        btn5 = new JButton("5");
-        btn1 = new JButton("1");
+        btn1000 = new JButton("₱1000");
+        btn500 = new JButton("₱500");
+        btn200 = new JButton("₱200");
+        btn100 = new JButton("₱100");
+        btn50 = new JButton("₱50");
+        btn20 = new JButton("₱20");
+        btn10 = new JButton("₱10");
+        btn5 = new JButton("₱5");
+        btn1 = new JButton("₱1");
 
-        // Action listeners
-        btnDone.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO: Add code for "Done" functionality
-                JOptionPane.showMessageDialog(EnterMoneyGUI.this, "You have entered P "+cashTrackerLabel.getText());
-                dispose();
-            }
-        });
 
         // Add buttons to the panel with 3 buttons per row
         enterMoneyButtonPanel.add(btn1000);
@@ -98,11 +91,15 @@ public class EnterMoneyGUI extends JFrame {
         btn10.addActionListener(listener);
         btn5.addActionListener(listener);
         btn1.addActionListener(listener);
+        btnDone.addActionListener(listener);
     }
 
     public void setUserCash(double userCash) {
         // Sets the text at the bottom of Enter Money to whatever the userCash is.
-        cashTrackerLabel = new JLabel();
         cashTrackerLabel.setText("Current Cash: ₱" + userCash);
+    }
+
+    public void Exit(){
+        this.dispose();
     }
 }

@@ -28,7 +28,7 @@ public class VMTFOptionsController implements ActionListener {
             if (getIsRegularVM()) {
                 RegularVendingFeatures RVendingFeatures = new RegularVendingFeatures();
                 RVendingFeatures.init();
-                RVendingFeaturesController RVendingFeaturesController = new RVendingFeaturesController(RVendingFeatures, regularVendingMachine, specialVendingMachine);
+                RVendingFeaturesController RVendingFeaturesController = new RVendingFeaturesController(RVendingFeatures, regularVendingMachine);
             } else if (!getIsRegularVM()){
                 SpecialVendingFeatures SVendingFeatures = new SpecialVendingFeatures();
                 SVendingFeatures.init();

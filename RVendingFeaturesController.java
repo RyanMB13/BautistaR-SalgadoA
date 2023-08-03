@@ -5,12 +5,10 @@ public class RVendingFeaturesController implements ActionListener {
 
     private final RegularVendingFeatures gui; // View
     private final VendingMachine vendingMachine; // Model
-    private final SpecialVendingMachine specialVendingMachine; //Model
 
-    public RVendingFeaturesController(RegularVendingFeatures gui, VendingMachine vendingMachine, SpecialVendingMachine specialVendingMachine) {
+    public RVendingFeaturesController(RegularVendingFeatures gui, VendingMachine vendingMachine) {
         this.gui = gui;
         this.vendingMachine = vendingMachine;
-        this.specialVendingMachine = specialVendingMachine;
         gui.setActionListener(this);
     }
 
@@ -19,9 +17,9 @@ public class RVendingFeaturesController implements ActionListener {
         if (e.getActionCommand().equals("Enter Money")) {
             EnterMoneyGUI enterMoneyGUI = new EnterMoneyGUI();
             enterMoneyGUI.init();
-            EnterMoneyGUIController enterMoneyGUIController = new EnterMoneyGUIController(enterMoneyGUI, vendingMachine, specialVendingMachine);
+            EnterMoneyGUIController enterMoneyGUIController = new EnterMoneyGUIController(enterMoneyGUI, vendingMachine);
         } else if (e.getActionCommand().equals("Display Items")) {
-            ItemDisplayGUI displayItemGUI = new ItemDisplayGUI(vendingMachine.itemList, vendingMachine, specialVendingMachine);
+            ItemDisplayGUI displayItemGUI = new ItemDisplayGUI(vendingMachine.itemList);
             displayItemGUI.init();
             ItemDisplayGUIController displayItemGUIController = new ItemDisplayGUIController(displayItemGUI);
         } else if (e.getActionCommand().equals("Purchase Item")) {
