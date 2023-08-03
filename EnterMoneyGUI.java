@@ -108,4 +108,13 @@ public class EnterMoneyGUI extends JFrame {
     public double getDisplayCash(){
         return this.displayCash;
     }
+
+    public void displayEnteredCashMessage() {
+        double enteredCash = getDisplayCash();
+
+        JOptionPane.showMessageDialog(this,
+                "You have entered: ₱" + enteredCash,
+                "Entered Cash",
+                JOptionPane.INFORMATION_MESSAGE);
+    }
 }
