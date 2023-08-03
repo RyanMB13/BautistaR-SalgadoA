@@ -33,7 +33,9 @@ public class RMaintenanceFeaturesController implements ActionListener {
         } else if (e.getActionCommand().equals("Replenish Stock")) {
 
         } else if (e.getActionCommand().equals("Replenish Change")) {
-
+            ReplenishChangeGUI replenishChangeGUI = new ReplenishChangeGUI();
+            replenishChangeGUI.init();
+            ReplenishChangeGUIController replenishChangeGUIController = new ReplenishChangeGUIController(replenishChangeGUI, vendingMachine);
         } else if (e.getActionCommand().equals("Print Purchase Summary")) {
             PurchaseSummaryGUI purchaseSummaryGUI = new PurchaseSummaryGUI(vendingMachine.itemList, vendingMachine.getSold(),
                     vendingMachine.getTotalSales());
@@ -87,7 +89,4 @@ public class RMaintenanceFeaturesController implements ActionListener {
         }
     }
 
-    public void printPurchaseSummary(){
-
-    }
 }
