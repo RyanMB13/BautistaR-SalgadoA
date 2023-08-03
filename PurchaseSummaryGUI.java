@@ -8,11 +8,11 @@ public class PurchaseSummaryGUI extends JFrame {
 
     private final java.util.List<Item> uniqueItemList;
     private final int totalQuantitySold;
-    private final int totalSales;
+    private final double totalSales;
     private JButton goBackButton;
 
 
-    public PurchaseSummaryGUI(java.util.List<Item> uniqueItemList, int totalQuantitySold, int totalSales) {
+    public PurchaseSummaryGUI(java.util.List<Item> uniqueItemList, int totalQuantitySold, double totalSales) {
         super("Purchase Summary");
         setLayout(new BorderLayout());
         setSize(400, 300);
@@ -28,8 +28,8 @@ public class PurchaseSummaryGUI extends JFrame {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
         // Labels for total quantity sold and total sales
-        JLabel quantitySoldLabel = new JLabel("Quantity sold: " + totalQuantitySold);
-        JLabel totalSalesLabel = new JLabel("Total sales: " + totalSales);
+        JLabel quantitySoldLabel = new JLabel("Quantity Sold: " + totalQuantitySold);
+        JLabel totalSalesLabel = new JLabel("Total Sales: ₱" + totalSales);
         panel.add(quantitySoldLabel);
         panel.add(Box.createRigidArea(new Dimension(15, 0))); // Spacer
         panel.add(totalSalesLabel);
@@ -44,8 +44,8 @@ public class PurchaseSummaryGUI extends JFrame {
         for (int i = 0; i < uniqueItemList.size(); i++) {
             Item item = uniqueItemList.get(i);
             tableData[i][0] = item.getName();
-            //tableData[i][1] = item.getInitialStock();
-            tableData[i][2] = item.getEndStock();
+            tableData[i][1] = item.getEndStock();
+            tableData[i][2] = item.getInitialStock();
         }
 
         JTable table = new JTable(new DefaultTableModel(tableData, columnHeaders));

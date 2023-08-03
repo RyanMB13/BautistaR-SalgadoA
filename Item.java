@@ -78,6 +78,8 @@ public class Item {
         return this.EndStock;
     }
 
+    public int getInitialStock() { return this.InitialStock; }
+
     @Override
     public int hashCode() {
         final int prime = 31;

@@ -31,6 +31,7 @@ public class PurchaseGUIController implements ActionListener {
                         vendingMachine.setSold(vendingMachine.getSold() + 1);
                         vendingMachine.setTotalSales(vendingMachine.getTotalSales() + item.getPrice());
                         gui.showPurchaseConfirmation(item.getName());
+                        gui.Exit();
                     } else {
                         gui.showNotEnoughCashMessage();
                     }

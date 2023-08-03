@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class RMaintenanceFeaturesController implements ActionListener {
 
-    private RegularMaintenanceFeatures gui;
+    private final RegularMaintenanceFeatures gui;
 
     private final VendingMachine vendingMachine;
 
@@ -35,7 +35,10 @@ public class RMaintenanceFeaturesController implements ActionListener {
         } else if (e.getActionCommand().equals("Replenish Change")) {
 
         } else if (e.getActionCommand().equals("Print Purchase Summary")) {
-            //PurchaseSummaryGUI purchaseSummaryGUI = new PurchaseSummaryGUI(vendingMachine.itemList, )
+            PurchaseSummaryGUI purchaseSummaryGUI = new PurchaseSummaryGUI(vendingMachine.itemList, vendingMachine.getSold(),
+                    vendingMachine.getTotalSales());
+            purchaseSummaryGUI.init();
+            PurchaseSummaryGUIController purchaseSummaryGUIController = new PurchaseSummaryGUIController(purchaseSummaryGUI);
         } else if (e.getActionCommand().equals("Back to Test Menu")) {
             gui.Exit();
         }

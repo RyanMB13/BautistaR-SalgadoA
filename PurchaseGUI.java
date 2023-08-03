@@ -6,13 +6,10 @@ import java.awt.event.ActionListener;
 
 public class PurchaseGUI extends JFrame {
 
-    private JFrame purchaseFrame;
     private JButton goBackButton;
     private JButton purchaseButton;
     private JComboBox<String> itemNamesComboBox;
     private final java.util.List<Item> uniqueItemList;
-
-    private String selected;
 
     public PurchaseGUI(java.util.List<Item> uniqueItemList) {
         super("Purchase Items");
@@ -25,7 +22,7 @@ public class PurchaseGUI extends JFrame {
     }
 
     public void init() {
-        purchaseFrame = new JFrame("Purchase Item");
+        JFrame purchaseFrame = new JFrame("Purchase Item");
         purchaseFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         purchaseFrame.setSize(400, 300);
 
@@ -81,14 +78,6 @@ public class PurchaseGUI extends JFrame {
             itemNamesComboBox.addItem(item.getName());
         }
 
-        // Add an action listener to the JComboBox
-        itemNamesComboBox.addActionListener(e -> {
-            // Retrieve the selected index
-            int selectedIndex = itemNamesComboBox.getSelectedIndex();
-            // Do something with the selected index, if needed.
-            // For example, you can store it in a variable or use it in other parts of your code.
-        });
-
         mainPanel.add(itemNamesComboBox, BorderLayout.NORTH);
 
         // Center align the text in all columns of the table
@@ -98,8 +87,6 @@ public class PurchaseGUI extends JFrame {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
         purchaseButton = new JButton("Purchase");
-
-        selected = (String) itemNamesComboBox.getSelectedItem();
 
         goBackButton = new JButton("Go Back");
 

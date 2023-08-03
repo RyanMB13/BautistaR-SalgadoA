@@ -25,7 +25,7 @@ public class AddItemGUI extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
 
-        JPanel panel = new JPanel(new GridBagLayout());
+        panel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new Insets(5, 5, 5, 5);
@@ -77,7 +77,7 @@ public class AddItemGUI extends JFrame {
         gbc.anchor = GridBagConstraints.EAST;
         panel.add(addItemButton, gbc);
 
-        backButton = new JButton("Back to Maintenance Featrues");
+        backButton = new JButton("Back to Maintenance Features");
         gbc.gridx = 1;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
