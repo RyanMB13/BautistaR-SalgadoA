@@ -12,7 +12,7 @@ public class PurchaseGUI extends JFrame {
     private JComboBox<String> itemNamesComboBox;
     private final java.util.List<Item> uniqueItemList;
 
-    private String selectedItem;
+    private String selected;
 
     public PurchaseGUI(java.util.List<Item> uniqueItemList) {
         super("Purchase Items");
@@ -81,6 +81,14 @@ public class PurchaseGUI extends JFrame {
             itemNamesComboBox.addItem(item.getName());
         }
 
+        // Add an action listener to the JComboBox
+        itemNamesComboBox.addActionListener(e -> {
+            // Retrieve the selected index
+            int selectedIndex = itemNamesComboBox.getSelectedIndex();
+            // Do something with the selected index, if needed.
+            // For example, you can store it in a variable or use it in other parts of your code.
+        });
+
         mainPanel.add(itemNamesComboBox, BorderLayout.NORTH);
 
         // Center align the text in all columns of the table
@@ -91,7 +99,7 @@ public class PurchaseGUI extends JFrame {
         }
         purchaseButton = new JButton("Purchase");
 
-        setSelectedItem((String) itemNamesComboBox.getSelectedItem());
+        selected = (String) itemNamesComboBox.getSelectedItem();
 
         goBackButton = new JButton("Go Back");
 
@@ -107,12 +115,8 @@ public class PurchaseGUI extends JFrame {
         setVisible(true);
     }
 
-    public void setSelectedItem(String name) {
-        this.selectedItem = name;
-    }
-
-    public String getItemName() {
-        return this.selectedItem;
+    public int getSelectedIndex() {
+        return itemNamesComboBox.getSelectedIndex();
     }
 
     public void showPurchaseConfirmation(String itemName) {

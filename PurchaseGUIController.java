@@ -15,17 +15,7 @@ public class PurchaseGUIController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Purchase")) {
-            int index = 0;
-            String name = gui.getItemName();
-
-            for (int i = 0; i < vendingMachine.itemList.size(); i++){
-                if (name.equalsIgnoreCase(vendingMachine.itemList.get(i).getName())) {
-                    index = i;
-                    break;
-                }
-            }
-
-            Item item = vendingMachine.itemList.get(index);
+            Item item = vendingMachine.itemList.get(gui.getSelectedIndex() - 1);
 
             if (vendingMachine.VMChangeList.get(0).getQuantity() == 0 || vendingMachine.VMChangeList.get(1).getQuantity() == 0 ||
                     vendingMachine.VMChangeList.get(2).getQuantity() == 0 || vendingMachine.VMChangeList.get(3).getQuantity() == 0 ||
@@ -50,7 +40,6 @@ public class PurchaseGUIController implements ActionListener {
             }
         } else if (e.getActionCommand().equals("Go Back")) {
             gui.Exit();
-            System.out.println("BACK");
         }
     }
 }
