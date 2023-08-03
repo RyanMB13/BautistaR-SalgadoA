@@ -61,13 +61,13 @@ public class VendingMachineOptions extends JFrame {
     }
 
     public void RegularSelectedDisplay(){
-        JOptionPane.showMessageDialog(optionsFrame, "Regular Vending Machine selected!");
+        JOptionPane.showMessageDialog(optionsFrame, "Regular Vending Machine selected!", "Vending Machine Options", JOptionPane.INFORMATION_MESSAGE);
         optionsFrame.dispose(); // Close the options frame after selection
         setVisible(false);
     }
 
     public void SpecialSelectedDisplay(){
-        JOptionPane.showMessageDialog(optionsFrame, "Special Vending Machine selected!");
+        JOptionPane.showMessageDialog(optionsFrame, "Special Vending Machine selected!", "Vending Machine Options", JOptionPane.INFORMATION_MESSAGE);
         optionsFrame.dispose(); // Close the options frame after selection
         setVisible(false);
     }

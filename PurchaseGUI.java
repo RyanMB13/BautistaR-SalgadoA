@@ -58,7 +58,7 @@ public class PurchaseGUI extends JFrame {
             tableData[i][1] = item.getName();
             tableData[i][2] = item.getCalories();
             tableData[i][3] = item.getPrice();
-            tableData[i][4] = countStock(item.getName());
+            //tableData[i][4] = countStock(item.getName());
             itemNumber++;
         }
 

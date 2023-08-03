@@ -4,11 +4,8 @@ import java.awt.event.ActionListener;
 public class VMTFOptionsController implements ActionListener {
 
     private final VendingMachineTestFeaturesOptions gui;
-
-    private VendingMachine regularVendingMachine;
-
-    private SpecialVendingMachine specialVendingMachine;
-
+    private final VendingMachine regularVendingMachine;
+    private final SpecialVendingMachine specialVendingMachine;
     private boolean isRegularVM;
 
     public VMTFOptionsController(VendingMachineTestFeaturesOptions gui) {
@@ -16,6 +13,12 @@ public class VMTFOptionsController implements ActionListener {
         gui.SetActionListener(this);
         this.regularVendingMachine = new VendingMachine();
         this.specialVendingMachine = new SpecialVendingMachine();
+
+        // Initializing arrayLists
+        this.regularVendingMachine.addItems();
+        this.specialVendingMachine.addItems();
+        this.regularVendingMachine.addMoney();
+        this.specialVendingMachine.addMoney();
     }
 
     @Override

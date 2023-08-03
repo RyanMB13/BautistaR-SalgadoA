@@ -4,16 +4,16 @@ import java.awt.event.ActionListener;
 public class EnterMoneyGUIController implements ActionListener {
     private final EnterMoneyGUI gui;
 
-    private VendingMachine regularVendingMachine;
+    private final VendingMachine regularVendingMachine;
 
-    private SpecialVendingMachine specialVendingMachine;
+    private final SpecialVendingMachine specialVendingMachine;
 
 
-    public EnterMoneyGUIController(EnterMoneyGUI gui) {
+    public EnterMoneyGUIController(EnterMoneyGUI gui, VendingMachine vendingMachine, SpecialVendingMachine specialVendingMachine) {
         this.gui = gui;
         gui.SetActionListener(this);
-        this.regularVendingMachine = new VendingMachine();
-        this.specialVendingMachine = new SpecialVendingMachine();
+        this.regularVendingMachine = vendingMachine;
+        this.specialVendingMachine = specialVendingMachine;
     }
 
     @Override
@@ -37,7 +37,6 @@ public class EnterMoneyGUIController implements ActionListener {
         } else if (e.getActionCommand().equals("1")) {
 
         }
-
     }
 }
 

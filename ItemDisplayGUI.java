@@ -4,14 +4,17 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class itemDisplayGUI extends JFrame{
+public class ItemDisplayGUI extends JFrame{
 
     private JFrame displayFrame;
 
     private JButton goBackButton;
     private JTable table;
     private java.util.List<Item> uniqueItemList;
-    public itemDisplayGUI(java.util.List<Item> uniqueItemList){
+    private final VendingMachine regularVendingMachine;
+
+    private final SpecialVendingMachine specialVendingMachine;
+    public ItemDisplayGUI(java.util.List<Item> uniqueItemList, VendingMachine regularVendingMachine, SpecialVendingMachine specialVendingMachine){
         super("Display Itms");
         setLayout(new BorderLayout());
         setSize(300, 200);
@@ -19,12 +22,12 @@ public class itemDisplayGUI extends JFrame{
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         this.uniqueItemList = uniqueItemList;
-
-        init();
+        this.regularVendingMachine = regularVendingMachine;
+        this.specialVendingMachine = specialVendingMachine;
     }
 
     public void init() {
-        displayFrame = new JFrame("Item Display");
+        displayFrame = new JFrame("Display Items");
         displayFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         displayFrame.setSize(500, 400);
         displayFrame.setLocationRelativeTo(null);
@@ -47,7 +50,7 @@ public class itemDisplayGUI extends JFrame{
             tableData[i][1] = item.getName();
             tableData[i][2] = item.getCalories();
             tableData[i][3] = item.getPrice();
-            tableData[i][4] = countStock(item.getName());
+            tableData[i][4] = item.getStock(); // make method countStock if SpecialVM
             itemNumber++;
         }
 

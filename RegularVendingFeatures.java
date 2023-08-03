@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class RegularVendingFeatures extends JFrame {
 
@@ -9,8 +10,8 @@ public class RegularVendingFeatures extends JFrame {
     private JButton purchaseItemButton;
     private JButton produceChangeButton;
     private JButton backButton;
-
     private JFrame regFeaturesOptionsFrame;
+    protected ArrayList<String> outputList = new ArrayList<>();
 
     public RegularVendingFeatures() {
         // title
@@ -57,16 +58,6 @@ public class RegularVendingFeatures extends JFrame {
         produceChangeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        displayItemsButton.addActionListener(e -> {
-            // TODO: Add code for "Display Items" functionality
-            JOptionPane.showMessageDialog(regFeaturesOptionsFrame, "Display Items selected!");
-        });
-
-        purchaseItemButton.addActionListener(e -> {
-            // TODO: Add code for "Purchase Item" functionality
-            JOptionPane.showMessageDialog(regFeaturesOptionsFrame, "Purchase Item selected!");
-        });
-
         // Add buttons to the panel
         regFeaturesOptionsPanel.add(enterMoneyButton);
         regFeaturesOptionsPanel.add(displayItemsButton);
@@ -94,11 +85,16 @@ public class RegularVendingFeatures extends JFrame {
             regFeaturesOptionsFrame.dispose();
         }
 
-        public void displayProduceChange(){
-            JOptionPane.showMessageDialog(regFeaturesOptionsFrame, "Your change has been dispensed: P+ current cash" );
-            System.out.print("hello");
-            regFeaturesOptionsFrame.dispose(); // Close the options frame after selection
-            setVisible(false);
+        public void displayProduceChange(double change){
+            StringBuilder message = new StringBuilder("Change to be dispensed: ₱" + change + "\n"); //StringBuilder to build the message for the JOptionPane
+
+            for (String s : outputList){
+                message.append(s);
+            }
+
+            JOptionPane.showMessageDialog(regFeaturesOptionsFrame, message, "Produce Change", JOptionPane.INFORMATION_MESSAGE);
+
+
         }
 }
 
