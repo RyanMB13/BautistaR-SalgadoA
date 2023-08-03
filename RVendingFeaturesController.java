@@ -29,6 +29,9 @@ public class RVendingFeaturesController implements ActionListener {
         } else if (e.getActionCommand().equals("Produce Change")) {
             produceChange();
             gui.displayProduceChange(vendingMachine.getUserCash());
+            for (Money m : vendingMachine.userCashList){
+                m.setQuantity(0);
+            }
             vendingMachine.setUserCash(0); // Reset userCash
         } else if (e.getActionCommand().equals("Back to Test Menu")) {
             gui.Exit();

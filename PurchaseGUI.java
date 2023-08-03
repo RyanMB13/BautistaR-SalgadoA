@@ -3,19 +3,16 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PurchaseGUI extends JFrame {
 
     private JFrame purchaseFrame;
-
     private JButton goBackButton;
     private JButton purchaseButton;
-
-    private JTable table;
     private JComboBox<String> itemNamesComboBox;
-    private java.util.List<Item> uniqueItemList;
+    private final java.util.List<Item> uniqueItemList;
+
+    private String selectedItem;
 
     public PurchaseGUI(java.util.List<Item> uniqueItemList) {
         super("Purchase Items");
@@ -55,12 +52,12 @@ public class PurchaseGUI extends JFrame {
             tableData[i][1] = item.getName();
             tableData[i][2] = item.getCalories();
             tableData[i][3] = item.getPrice();
-            //tableData[i][4] = countStock(item.getName());
+            tableData[i][4] = item.getStock();
             itemNumber++;
         }
 
         // Create the table with a default table model
-        table = new JTable(new DefaultTableModel(tableData, columnHeaders));
+        JTable table = new JTable(new DefaultTableModel(tableData, columnHeaders));
 
         // Limit table visibility to 6 rows and add a scrollbar
         int visibleRows = 6;
@@ -83,9 +80,6 @@ public class PurchaseGUI extends JFrame {
         for (Item item : uniqueItemList) {
             itemNamesComboBox.addItem(item.getName());
         }
-        itemNamesComboBox.addActionListener(e -> {
-            // TODO: Implement logic to handle item selection from the combo box
-        });
 
         mainPanel.add(itemNamesComboBox, BorderLayout.NORTH);
 
@@ -95,14 +89,9 @@ public class PurchaseGUI extends JFrame {
         for (int i = 0; i < table.getColumnCount(); i++) {
             table.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
-
         purchaseButton = new JButton("Purchase");
-        purchaseButton.addActionListener(e -> {
-            String selectedItem = (String) itemNamesComboBox.getSelectedItem();
-            if (selectedItem != null && !selectedItem.equals("Select an item you want to purchase")) {
-                showPurchaseConfirmation(selectedItem);
-            }
-        });
+
+        setSelectedItem((String) itemNamesComboBox.getSelectedItem());
 
         goBackButton = new JButton("Go Back");
 
@@ -117,19 +106,44 @@ public class PurchaseGUI extends JFrame {
         setVisible(true);
     }
 
-    private void Exit() {
-        purchaseFrame.dispose();
+    public void setSelectedItem(String name) {
+        this.selectedItem = name;
     }
 
-    private void showPurchaseConfirmation(String itemName) {
-        JOptionPane.showMessageDialog(this, "You have bought " + itemName,
-                "Purchase Confirmation", JOptionPane.INFORMATION_MESSAGE);
+    public String getItemName() {
+        return this.selectedItem;
     }
+
+    public void showPurchaseConfirmation(String itemName) {
+        JOptionPane.showMessageDialog(this, "You have bought " + itemName,
+                "Purchase Item", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void showNotEnoughChangeMessage() {
+        JOptionPane.showMessageDialog(this,"Cannot continue transaction due to insufficient change, " +
+                "please ask the owner to replenish all denominations of change.",
+                "Purchase Item", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void showNotEnoughCashMessage() {
+        JOptionPane.showMessageDialog(this,"You cannot afford this item!", "Purchase Item", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void showNotEnoughStockMessage() {
+        JOptionPane.showMessageDialog(this,"This item is sold out!", "Purchase Item", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+   public void Exit() {
+       purchaseFrame.dispose();
+   }
 
     public void setActionListener(ActionListener listener){
+        itemNamesComboBox.addActionListener(listener);
         purchaseButton.addActionListener(listener);
         goBackButton.addActionListener(listener);
     }
+
+
 
 }
 
