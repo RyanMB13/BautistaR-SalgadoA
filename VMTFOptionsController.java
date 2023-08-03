@@ -19,6 +19,8 @@ public class VMTFOptionsController implements ActionListener {
         this.specialVendingMachine.addItems();
         this.regularVendingMachine.addMoney();
         this.specialVendingMachine.addMoney();
+
+        specialVendingMachine.updateUniqueItemList();
     }
 
     @Override
@@ -32,8 +34,7 @@ public class VMTFOptionsController implements ActionListener {
             } else if (!getIsRegularVM()){
                 SpecialVendingFeatures SVendingFeatures = new SpecialVendingFeatures();
                 SVendingFeatures.init();
-                // controller COMMENT KO MUNA KASI WALA PANG CONTROLLER CLASS FILE
-                // SVendingFeaturesController sVendingFeaturesController = new SVendingFeaturesController(SVendingFeatures, specialVendingMachine);
+                SVendingFeaturesController sVendingFeaturesController = new SVendingFeaturesController(SVendingFeatures, specialVendingMachine);
             }
         } else if (e.getActionCommand().equals("Maintenance Features")) {
             gui.hideParentFrame();
@@ -44,8 +45,7 @@ public class VMTFOptionsController implements ActionListener {
             } else if (!getIsRegularVM()){
                 SpecialMaintenanceFeatures SMaintenanceFeatures = new SpecialMaintenanceFeatures();
                 SMaintenanceFeatures.init();
-                // controller COMMENT KO MUNA KASI WALA PANG CONTROLLER CLASS FILE
-                // SMaintenanceFeaturesController sMaintenanceFeaturesController = new SVendingFeaturesController(SMaintenanceFeatures, specialVendingMachine);
+                SMaintenanceFeaturesController sMaintenanceFeaturesController = new SMaintenanceFeaturesController(SMaintenanceFeatures, specialVendingMachine);
             }
         } else if (e.getActionCommand().equals("Exit")){
             gui.exitButton();

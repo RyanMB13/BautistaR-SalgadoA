@@ -80,7 +80,7 @@ public class ReplenishChangeGUI extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-    public void SetActionListener(ActionListener listener){
+    public void setActionListener(ActionListener listener){
         btn1000.addActionListener(listener);
         btn500.addActionListener(listener);
         btn200.addActionListener(listener);

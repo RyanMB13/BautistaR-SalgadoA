@@ -1,50 +1,42 @@
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RMaintenanceFeaturesController implements ActionListener {
+public class SMaintenanceFeaturesController implements ActionListener {
 
-    private final RegularMaintenanceFeatures gui;
+    private final SpecialMaintenanceFeatures gui;
+    private final SpecialVendingMachine specialVendingMachine;
 
-    private final VendingMachine vendingMachine;
-
-
-    public RMaintenanceFeaturesController(RegularMaintenanceFeatures rMaintenanceFeatures, VendingMachine vendingMachine) {
-        this.gui = rMaintenanceFeatures;
-        this.vendingMachine = vendingMachine;
+    public SMaintenanceFeaturesController(SpecialMaintenanceFeatures gui, SpecialVendingMachine specialVendingMachine){
+        this.specialVendingMachine = specialVendingMachine;
+        this.gui = gui;
         gui.setActionListener(this);
     }
+
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Add Item")) {
-            AddItemGUI addItemGUI = new AddItemGUI();
-            addItemGUI.init();
-            AddItemGUIController addItemGUIController = new AddItemGUIController(addItemGUI, vendingMachine);
+            System.out.println("You chose Add Item!");
         } else if (e.getActionCommand().equals("Change Price")) {
-            ChangePriceGUI changePriceGUI = new ChangePriceGUI(vendingMachine.itemList);
-            changePriceGUI.init();
-            ChangePriceGUIController changePriceGUIController = new ChangePriceGUIController(vendingMachine, changePriceGUI);
+            System.out.println("You chose Change Price!");
+        } else if (e.getActionCommand().equals("Add to Cannot Be Sold Separately")) {
+            System.out.println("You chose Add to Cannot Be Sold Separately!");
         } else if (e.getActionCommand().equals("Collect Payment")) {
             producePayment();
-            gui.displayCollectPayment(vendingMachine.getTotalPayment());
-            for (Money m : vendingMachine.paymentList) {
+            gui.displayCollectPayment(specialVendingMachine.getTotalPayment());
+            for (Money m : specialVendingMachine.paymentList) {
                 m.setQuantity(0);
             }
-            vendingMachine.setTotalPayment(0);
+            specialVendingMachine.setTotalPayment(0);
         } else if (e.getActionCommand().equals("Replenish Stock")) {
-            ReplenishStockGUI replenishStockGUI = new ReplenishStockGUI(vendingMachine.itemList);
-            replenishStockGUI.init();
-            ReplenishStockGUIController replenishStockGUIController = new ReplenishStockGUIController(vendingMachine, replenishStockGUI);
+            System.out.println("You chose Replenish Stock!");
         } else if (e.getActionCommand().equals("Replenish Change")) {
             ReplenishChangeGUI replenishChangeGUI = new ReplenishChangeGUI();
             replenishChangeGUI.init();
-            ReplenishChangeGUIController replenishChangeGUIController = new ReplenishChangeGUIController(replenishChangeGUI, vendingMachine);
+            ReplenishChangeGUIControllerSpecial replenishChangeGUIControllerSpecial = new ReplenishChangeGUIControllerSpecial(replenishChangeGUI, specialVendingMachine);
         } else if (e.getActionCommand().equals("Print Purchase Summary")) {
-            PurchaseSummaryGUI purchaseSummaryGUI = new PurchaseSummaryGUI(vendingMachine.itemList, vendingMachine.getSold(),
-                    vendingMachine.getTotalSales());
-            purchaseSummaryGUI.init();
-            PurchaseSummaryGUIController purchaseSummaryGUIController = new PurchaseSummaryGUIController(purchaseSummaryGUI);
+            System.out.println("You chose Replenish Stock!");
         } else if (e.getActionCommand().equals("Back to Test Menu")) {
             gui.Exit();
         }
@@ -52,10 +44,10 @@ public class RMaintenanceFeaturesController implements ActionListener {
 
     public void producePayment() {
         double payment = 0;
-        for (Money m : vendingMachine.paymentList) {
+        for (Money m : specialVendingMachine.paymentList) {
             payment += m.getValue() * m.getQuantity();
         }
-        vendingMachine.setTotalPayment(payment);
+        specialVendingMachine.setTotalPayment(payment);
         if (payment > 0) {
             do {
                 if (payment >= 1000) {
@@ -92,4 +84,5 @@ public class RMaintenanceFeaturesController implements ActionListener {
             gui.outputList.add("There is no payment to collect");
         }
     }
+
 }

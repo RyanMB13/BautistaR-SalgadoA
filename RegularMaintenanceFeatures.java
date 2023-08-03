@@ -13,6 +13,7 @@ public class RegularMaintenanceFeatures extends JFrame {
     private JButton printSummaryButton;
     private JButton backButton;
     private JFrame regMaintenanceOptionsFrame;
+
     protected ArrayList<String> outputList = new ArrayList<>();
 
     public RegularMaintenanceFeatures() {
@@ -102,9 +103,5 @@ public class RegularMaintenanceFeatures extends JFrame {
         }
 
         JOptionPane.showMessageDialog(regMaintenanceOptionsFrame, message, "Collect Payment", JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    public void displayPrintPurchaseSummary() {
-
     }
 }

@@ -11,6 +11,7 @@ public class RegularVendingFeatures extends JFrame {
     private JButton produceChangeButton;
     private JButton backButton;
     private JFrame regFeaturesOptionsFrame;
+
     protected ArrayList<String> outputList = new ArrayList<>();
 
     public RegularVendingFeatures() {

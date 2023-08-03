@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class SpecialMaintenanceFeatures extends JFrame {
     private JButton addItemButton ;
@@ -10,6 +12,10 @@ public class SpecialMaintenanceFeatures extends JFrame {
     private JButton replenishChangeButton;
     private JButton printSummaryButton;
     private JButton backButton;
+
+    private JFrame specialMaintenanceOptionsFrame;
+
+    protected ArrayList<String> outputList = new ArrayList<>();
 
     public SpecialMaintenanceFeatures() {
         // title
@@ -24,7 +30,7 @@ public class SpecialMaintenanceFeatures extends JFrame {
     }
     public void init() {
         // Create a new JFrame for displaying the options
-        JFrame specialMaintenanceOptionsFrame = new JFrame("Maintenance Features");
+        specialMaintenanceOptionsFrame = new JFrame("Maintenance Features");
         specialMaintenanceOptionsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         specialMaintenanceOptionsFrame.setSize(300, 300);
         specialMaintenanceOptionsFrame.setResizable(false);
@@ -60,44 +66,6 @@ public class SpecialMaintenanceFeatures extends JFrame {
         printSummaryButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Add action listeners to the buttons
-        addItemButton.addActionListener(e -> {
-            // TODO: Add code for "add Item" functionality
-            JOptionPane.showMessageDialog(specialMaintenanceOptionsFrame, "Enter Money selected!");
-        });
-        collectPaymentButton.addActionListener(e -> {
-            // TODO: Add code for "add Item" functionality
-            JOptionPane.showMessageDialog(specialMaintenanceOptionsFrame, "Enter Money selected!");
-        });
-        cannotBeSoldButton.addActionListener(e -> {
-            // TODO: Add code for "add Item" functionality
-            JOptionPane.showMessageDialog(specialMaintenanceOptionsFrame, "Enter Money selected!");
-        });
-        changePriceButton.addActionListener(e -> {
-            // TODO: Add code for "Change Price" functionality
-            JOptionPane.showMessageDialog(specialMaintenanceOptionsFrame, "Display Items selected!");
-        });
-
-        replenishStockButton.addActionListener(e -> {
-            // TODO: Add code for "Replenish Stock" functionality
-            JOptionPane.showMessageDialog(specialMaintenanceOptionsFrame, "Purchase Item selected!");
-        });
-
-        replenishChangeButton.addActionListener(e -> {
-            // TODO: Add code for "Replenish change" functionality
-            JOptionPane.showMessageDialog(specialMaintenanceOptionsFrame, "Produce Change selected!");
-        });
-
-        printSummaryButton.addActionListener(e -> {
-            // TODO: Add code for "Print summary" functionality
-            JOptionPane.showMessageDialog(specialMaintenanceOptionsFrame, "Produce Change selected!");
-        });
-
-        backButton.addActionListener(e -> {
-            // Close the options frame and show the parent frame (TestFeaturesOptions) again
-            specialMaintenanceOptionsFrame.dispose();
-        });
-
         // Add buttons to the panel
         specialMaintenanceOptionsPanel.add(addItemButton);
         specialMaintenanceOptionsPanel.add(collectPaymentButton);
@@ -115,4 +83,30 @@ public class SpecialMaintenanceFeatures extends JFrame {
         specialMaintenanceOptionsFrame.setLocationRelativeTo(null);//keep it centered
         specialMaintenanceOptionsFrame.setVisible(true);
     }
+
+    public void setActionListener(ActionListener listener) {
+        addItemButton.addActionListener(listener);
+        changePriceButton.addActionListener(listener);
+        cannotBeSoldButton.addActionListener(listener);
+        collectPaymentButton.addActionListener(listener);
+        replenishStockButton.addActionListener(listener);
+        replenishChangeButton.addActionListener(listener);
+        printSummaryButton.addActionListener(listener);
+        backButton.addActionListener(listener);
+    }
+
+    public void Exit(){
+        specialMaintenanceOptionsFrame.dispose();
+    }
+
+    public void displayCollectPayment(double payment) {
+        StringBuilder message = new StringBuilder("Payment to be dispensed: ₱" + payment + "\n"); //StringBuilder to build the message for the JOptionPane
+
+        for (String s : outputList){
+            message.append(s);
+        }
+
+        JOptionPane.showMessageDialog(specialMaintenanceOptionsFrame, message, "Collect Payment", JOptionPane.INFORMATION_MESSAGE);
+    }
+
 }

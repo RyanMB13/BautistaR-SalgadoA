@@ -8,7 +8,7 @@ public class ReplenishChangeGUIController implements ActionListener {
     public ReplenishChangeGUIController(ReplenishChangeGUI replenishChangeGUI, VendingMachine regularVendingMachine) {
         this.gui = replenishChangeGUI;
         this.regularVendingMachine = regularVendingMachine;
-        gui.SetActionListener(this);
+        gui.setActionListener(this);
     }
 
     @Override
