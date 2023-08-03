@@ -89,8 +89,6 @@ public class EnterMoneyGUI extends JFrame {
         setVisible(true);
     }
     public void SetActionListener(ActionListener listener){
-
-
         btn1000.addActionListener(listener);
         btn500.addActionListener(listener);
         btn200.addActionListener(listener);

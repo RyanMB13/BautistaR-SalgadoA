@@ -66,7 +66,7 @@ public class ItemDisplayGUI extends JFrame{
         JScrollPane scrollPane = new JScrollPane(table);
         mainPanel.add(scrollPane, BorderLayout.CENTER);
 
-        goBackButton = new JButton("Go Back to Vending Features");
+        goBackButton = new JButton("Back to Vending Features");
         //goBackButton.addActionListener(e -> goBack());
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -81,7 +81,7 @@ public class ItemDisplayGUI extends JFrame{
     public void goBack() {
         // Implement the logic to go back to vending features here
         // For example, you can close this window and open the main vending window
-        dispose();
+        displayFrame.dispose();
     }
 
     public void setActionListener(ActionListener listener){

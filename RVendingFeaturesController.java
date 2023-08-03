@@ -18,21 +18,18 @@ public class RVendingFeaturesController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Enter Money")) {
             EnterMoneyGUI enterMoneyGUI = new EnterMoneyGUI();
-
             enterMoneyGUI.init();
-
             EnterMoneyGUIController enterMoneyGUIController = new EnterMoneyGUIController(enterMoneyGUI, vendingMachine, specialVendingMachine);
         } else if (e.getActionCommand().equals("Display Items")) {
             ItemDisplayGUI displayItemGUI = new ItemDisplayGUI(vendingMachine.itemList, vendingMachine, specialVendingMachine);
-
             displayItemGUI.init();
+            ItemDisplayGUIController displayItemGUIController = new ItemDisplayGUIController(displayItemGUI);
         } else if (e.getActionCommand().equals("Purchase Item")) {
             System.out.print("You selected Purchase Item");
         } else if (e.getActionCommand().equals("Produce Change")) {
             produceChange();
             gui.displayProduceChange(vendingMachine.getUserCash());
-            // Reset userCash
-            vendingMachine.setUserCash(0);
+            vendingMachine.setUserCash(0); // Reset userCash
         } else if (e.getActionCommand().equals("Back to Test Menu")) {
             gui.Exit();
         }

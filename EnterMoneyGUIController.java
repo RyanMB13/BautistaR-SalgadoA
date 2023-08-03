@@ -20,6 +20,7 @@ public class EnterMoneyGUIController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("1000")) {
 
+
         } else if (e.getActionCommand().equals("500")) {
 
         } else if (e.getActionCommand().equals("200")) {
